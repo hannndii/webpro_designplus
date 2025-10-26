@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.bc-container{
+    display: block;
+}
+
+ul .breadcrumb{
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+ul .breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+ul .breadcrumb li+li:before{
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+ul .breadcrumb li a{
+    color: #2236E0;
+    text-decoration: none;
+}
+
+ul .breadcrumb li a:hover{
+    color: #18269F;
+    text-decoration: underline;
+}
