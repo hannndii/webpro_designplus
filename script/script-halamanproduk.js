@@ -40,3 +40,7 @@ productForm.addEventListener('submit', function(e) {
     
     console.log('Selected options:', selections);
 });
+
+document.getElementById('buy-button').onclick = function() {
+    window.location.href = 'paymentpage.html'
+}
