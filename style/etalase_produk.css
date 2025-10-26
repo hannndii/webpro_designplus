@@ -38,96 +38,78 @@ ul {
     list-style: none;
 }
 
-/* = = = = = = = = = = NAVBAR = = = = = = = = = = */
-.site-header {
-    background-color: var(--header-bg);
-    border-bottom: 1px solid var(--color-border);
-    padding: 0 1.5rem;
-    overflow-x: auto;
-}
-
-.navbar-container {
+/* ========== NAVBAR ========== */
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 30px;
+    padding: 18px 60px;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.logo {
+  }
+  
+  .logo {
+    font-weight: 700;
     font-size: 20px;
-    font-weight: 800;
-    color: var(--brand-blue);
-    flex-shrink: 0;
-    margin-right: 4rem;
-}
-
-.search-bar {
+  }
+  
+  .logo .blue {
+    color: #1a47ff;
+  }
+  
+  .search-bar {
     display: flex;
     align-items: center;
     background: #f0f2ff;
     padding: 8px 12px;
     border-radius: 10px;
-    width: 700px;
+    width: 700px; /* ubah sesuai keinginan */
     max-width: 600px;
-}
-
-.search-bar i {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-right: 0.75rem;
-}
-
-.search-bar input {
+  }
+  
+  .search-bar input {
     border: none;
     outline: none;
     background: none;
     margin-left: 8px;
     width: 100%;
-}
-
-.search-bar input::placeholder {
-    color: var(--text-light);
-    font-weight: 500;
-    font-size: medium;
-}
-
-.main-nav {
-    margin-left: auto;
-    flex-shrink: 0;
-}
-
-.main-nav ul {
-    display: flex;
-    gap: 25px;
-    margin-right: 25px;
-}
-
-.main-nav a {
-    font-weight: 400;
-    color: var(--text-dark);
-    white-space: nowrap;
-}
-
-.main-nav a:hover {
-    color: var(--brand-blue);
-    font-weight: 600;
-}
-
-.nav-icons {
+  }
+  
+  .nav-links {
+    list-style: none;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    flex-shrink: 0;
-}
-
-.nav-icons .icon-link {
+    gap: 25px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #1a47ff;
+  }
+  
+  .nav-links i {
     font-size: 18px;
-    color: var(--brand-blue);
-}
-
-
+  }
+  
+  /* Responsif */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .search-bar {
+      width: 90%;
+    }
+  }
+  
 /* = = = = = = = = = = MAIN CONTENT = = = = = = = = = = */
 .hero {
     position: relative;
