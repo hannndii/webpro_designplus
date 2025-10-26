@@ -36,51 +36,142 @@
 
     <!-- Main Section -->
     <main>
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Produk</a></li>
-            <li><a href="#">Etalase Produk</a></li>
-            <li><a href="#">Nama Produk</a></li>
-        </ul>
+        <!-- Breadcrumb -->
+        <div class="bc-container">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Produk</a></li>
+                <li><a href="#">Etalase Produk</a></li>
+                <li>Nama Produk</li>
+            </ul>
+        </div>
+        <!-- Detail Produk -->
+        <section class="product-detail">
+            <div class="dp-content">              
+                <div class="content-left">
+                    <img src="assets/baju.png" alt="brosur cetak">
+                    <p class="product-placeholder" id="material">Cotton Combed 30s</p>
+                    <div class="mini-photo">
+
+                    </div>
+                    <div>
+                      <ul class="mini-option">
+                        <li><a href=""><i class="fa-regular fa-comments"></i>Chat</a></li>
+                        <li><a href=""><i class="fa-regular fa-heart"></i>Wishlist</a></li>
+                        <li><a href=""><i class="fa-regular fa-share-from-square"></i>Share</a></li>
+                      </ul>
+                    </div>
+                    <div class="terms">
+                      <p>*Harga belum termasuk dengan ongkir</p>
+                      <p>**Pembelian produk dikenakan PPN sebesar 12%</p>
+                    </div>
+                </div>
+                <div class="content-right">
+                    <div class="product-type">
+                        <span><i class="fa-solid fa-shirt"></i></span>
+                        <p>Merchandise</p>
+                    </div>
+                    <div class="product-info">
+                        <p id="product-name">Kaos Cotton Combed</p>
+                        <ul>
+                            <li>Stok <span id="stock">80rb+</span></li>
+                            <li class="dot"><span>●</span></li>
+                            <li>Terjual <span id="selling">20rb+</span></li>
+                            <li class="dot"><span>●</span></li>
+                            <li class="rating" id="rate"><i class="fa-solid fa-star star"></i>5<span id="total-rating">(3.281 rating)</span></li>
+                        </ul>
+                    </div>
+                    <div class="divider"></div>
+                    <!-- Pilihan Produk -->
+                    <form id="product-form" class="product-option">
+                        <div class="option-group">
+                            <div class="option-header">
+                                <h3>Pilih Bahan: <span id="material">Cotton Combed</span></h3>
+                                <span class="price">Rp35.000</span>
+                            </div>
+                            <div class="material-options">
+                                <input type="radio" id="polyester" name="material" value="Polyester">
+                                <label for="polyester">Polyester</label>
+
+                                <input type="radio" id="cvc" name="material" value="CVC">
+                                <label for="cvc">CVC</label>
+
+                                <input type="radio" id="satin" name="material" value="Satin">
+                                <label for="satin">Satin</label>
+
+                                <input type="radio" id="cotton-carded" name="material" value="Cotton Carded">
+                                <label for="cotton-carded">Cotton Carded</label>
+
+                                <input type="radio" id="cotton-combed" name="material" value="Cotton Combed" checked>
+                                <label for="cotton-combed">Cotton Combed</label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <div class="option-header">
+                                <h3>Pilih Warna: <span id="color">Putih</span></h3>
+                                <span class="price">Rp0</span>
+                            </div>
+                            <div class="color-options">
+                                <input type="radio" id="white" name="color" value="Putih" checked>
+                                <label for="white" class="color-circle white"></label>
+
+                                <input type="radio" id="black" name="color" value="Hitam">
+                                <label for="black" class="color-circle black"></label>
+
+                                <input type="radio" id="red" name="color" value="Merah">
+                                <label for="red" class="color-circle red"></label>
+
+                                <input type="radio" id="green" name="color" value="Hijau">
+                                <label for="green" class="color-circle green"></label>
+
+                                <input type="radio" id="yellow" name="color" value="Kuning">
+                                <label for="yellow" class="color-circle yellow"></label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <div class="option-header">
+                                <h3>Pilih Desain: <span id="design-option">Custom</span></h3>
+                                <span class="price">Rp5.000</span>
+                            </div>
+                            <div class="design-options">
+                                <input type="radio" id="standard" name="design" value="Standard">
+                                <label for="standard">Standard</label>
+                                <input type="radio" id="custom" name="design" value="Custom" checked>
+                                <label for="custom">Custom</label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <div class="quantity-control">
+                              <div class="option-header">
+                                <h3>Jumlah: <span id="total">100</span></h3>
+                              </div>
+                              <div class="quantity-input">
+                                <button type="button" class="qty-btn minus">−</button>
+                                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                                <button type="button" class="qty-btn plus">+</button>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="subtotal">
+                          <h2>Subtotal*</h2>
+                          <span class="total-price">Rp4.000.000</span>
+                        </div>
+                        <div class="action-buttons">
+                          <button type="button" class="btn-cart"><i class="fa-solid fa-plus"></i>Tambah ke Keranjang</button>
+                          <button type="submit" class="btn-buy">Beli Langsung</button>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer Section -->
     <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-column">
-          <h3>Designplus.</h3>
-          <p>Solusi Cetak Profesional dan Terpercaya</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i> designPlus</a><br />
-            <a href="#"><i class="fab fa-facebook"></i> designPlus</a>
-          </div>
-        </div>
-
-        <div class="footer-column">
-          <h4><i class="fas fa-list"></i> Kontak</h4>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Jl. Designplus No.32, Bekasi,
-            Cikarang Selatan, 27381
-          </p>
-          <p><i class="fab fa-whatsapp"></i> +6281329176328</p>
-          <p><i class="fas fa-envelope"></i> cs@designplus.com</p>
-        </div>
-
-        <div class="footer-column">
-          <h4>Temukan Kami di Google</h4>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4099.53394793094!2d107.6277657107375!3d-6.973357268253711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9adf177bf8d%3A0x437398556f9fa03!2sUniversitas%20Telkom!5e1!3m2!1sid!2sid!4v1761136929757!5m2!1sid!2sid"
-            width="100%"
-            height="250"
-            style="border: 0; border-radius: 8px"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
-        </div>
-      </div>
-
       <div class="footer-bottom">
         <p>© 2025 Designplus. Semua Hak Cipta Dilindungi.</p>
       </div>
