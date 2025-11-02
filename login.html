@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Designplus</title>
+
   <link rel="stylesheet" href="style/style-login.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -13,17 +14,18 @@
       <div class="login-box">
         <h1 class="logo">Designplus<span class="dot">.</span></h1>
 
-        <h2>Masuk</h2>
-        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at.</p>
+        <p class="changing-text" id="changingText">Mencetak dengan kualitas terbaik...</p>
 
-        <form>
+        <h2>Masuk</h2>
+
+        <form id="loginForm">
           <label for="email">Email</label>
           <input type="email" id="email" placeholder="Masukkan email" required>
 
           <label for="password">Password</label>
           <input type="password" id="password" placeholder="Masukkan password" required>
 
-          <button type="submit" class="btn" onclick="window.location.href='home.html'" >Log in</button>
+          <button type="submit" class="btn">Log in</button>
 
           <div class="divider">
             <span>Atau</span>
@@ -35,11 +37,17 @@
           </button>
         </form>
 
-        <p class="signup">Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+        <p class="signup">
+          Belum punya akun?
+          <a href="register.html">Daftar di sini</a>
+        </p>
       </div>
     </div>
 
     <div class="right"></div>
   </div>
+
+  <script src="script/text-change.js"></script>
+  <script src="script/login.js"></script>
 </body>
 </html>

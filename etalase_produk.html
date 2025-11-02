@@ -31,14 +31,18 @@
         </div>
 
         <ul class="nav-links">
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Produk</a></li>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="etalase_produk.html">Produk</a></li>
           <li><a href="#">Layanan</a></li>
           <li>
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <!-- Tampilkan nama user -->
+            <a href="#" id="userMenu">
+              <i class="fa-regular fa-user"></i>
+              <span id="userNameDisplay"></span>
+            </a>
           </li>
         </ul>
       </nav>
@@ -288,5 +292,6 @@
         &copy; 2025 Designplus. Semua Hak Cipta Dilindungi.
       </div>
     </footer>
+    <script src="script/user.js"></script>
   </body>
 </html>
