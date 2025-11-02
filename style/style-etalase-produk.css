@@ -46,19 +46,6 @@ header {
   z-index: 1000;
 }
 
-/* TAMBAHKAN BLOK BARU INI */
-header.scrolled {
-  /* 1. Beri background semi-transparan (opacity) */
-  background: rgba(255, 255, 255, 0.85); /* Putih dengan 85% opacity */
-  
-  /* 2. Terapkan efek BLUR (kaca buram) */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Untuk support Safari */
-  
-  /* 3. Munculkan kembali shadow Anda */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
 /* ========== NAVBAR ========== */
 .navbar {
   display: flex;
@@ -119,18 +106,6 @@ header.scrolled {
   font-size: 18px;
 }
 
-/* Responsif */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .search-bar {
-    width: 90%;
-  }
-}
-
 /* = = = = = = = = = = MAIN CONTENT = = = = = = = = = = */
 .hero {
   position: relative;
@@ -169,8 +144,8 @@ header.scrolled {
 }
 
 .hero p {
-  font-size: 1.5rem;
-  max-width: 700px;
+  font-size: 1.1rem;
+  max-width: 600px;
 }
 
 .breadcrumbs {
@@ -434,4 +409,16 @@ header.scrolled {
   border-top: 2px solid #1e2eb8;
   width: 100vw;
   margin-left: calc(50% - 50vw);
+}
+
+/* = = = = = = = = = = MEDIA RESPONSIF = = = = = = = = = = */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar {
+    width: 90%;
+  }
 }

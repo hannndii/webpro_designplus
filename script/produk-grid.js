@@ -18,9 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/**
- * Fungsi untuk me-render semua kartu produk DAN menambahkan click listener
- */
+// = = = = = = = = = Fungsi untuk me-render semua kartu produk DAN menambahkan click listener = = = = = = = = =
 function renderProducts(productData) {
   const gridContainer = document.querySelector(".product-grid");
   if (!gridContainer) return;
@@ -44,7 +42,7 @@ function renderProducts(productData) {
 
   gridContainer.innerHTML = productCardsHTML;
 
-  // Tambahkan event click ke setiap card
+// = = = = = = = = = Tambahkan event click ke setiap card = = = = = = = = = 
   const productCards = gridContainer.querySelectorAll(".product-card");
   productCards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -55,6 +53,7 @@ function renderProducts(productData) {
   });
 }
 
+// = = = = = = = = = Fungsi untuk generate bintang rating dan format harga = = = = = = = = =
 function generateStars(rating) {
   let starsHTML = '';
   const totalStars = 5;
@@ -69,6 +68,7 @@ function generateStars(rating) {
   return starsHTML;
 }
 
+// = = = = = = = = = Fungsi untuk format harga ke dalam Rupiah = = = = = = = = =
 function formatPrice(price) {
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',
