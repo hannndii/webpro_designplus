@@ -25,7 +25,7 @@ header {
   justify-content: space-between;
   padding: 18px 60px;
   background: #fff;
-  box-shadow: 0 12px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
@@ -144,26 +144,26 @@ header {
 }
 .mitra-section {
   text-align: center;
-  padding: 140px 60px; /* area lebih tinggi */
+  padding: 140px 60px; 
   background-color: #fff;
 }
 
 .mitra-section h2 {
-  font-size: 42px; /* judul besar */
+  font-size: 42px; 
   font-weight: 800;
   margin-bottom: 16px;
   color: #000;
 }
 
 .mitra-section p {
-  font-size: 20px; /* teks deskripsi besar */
+  font-size: 20px; 
   color: #666;
   margin-bottom: 70px;
 }
 
 .logo-scroll {
   display: flex;
-  gap: 140px; /* jarak antar logo lebar */
+  gap: 140px; 
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 40px 0;
@@ -180,7 +180,7 @@ header {
 }
 
 .logo-scroll img {
-  height: 90px; /* logo lebih besar */
+  height: 90px; 
   flex-shrink: 0;
   filter: grayscale(100%);
   transition: all 0.3s ease;
