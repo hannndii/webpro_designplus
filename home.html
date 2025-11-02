@@ -13,18 +13,18 @@
     <link rel="stylesheet" href="/style/style-home.css" />
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo">
-          <a href="home.html">
-            <img src="assets/logo.png" alt="logo designplus" style="width: 120px;"/>
-          </a>
-        </div>
-        <div class="search-bar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Cari produk" />
-        </div>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="home.html">
+          <img src="assets/logo.png" alt="logo designplus" style="width: 120px;"/>
+        </a>
+      </div>
 
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Cari produk" />
+      </div>
+      
         <ul class="nav-links">
           <li><a href="#">Beranda</a></li>
           <li><a href="etalase_produk.html">Produk</a></li>
@@ -33,7 +33,10 @@
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <a href="#" id="userMenu">
+              <i class="fa-regular fa-user"></i>
+              <span id="userNameDisplay"></span>
+            </a>
           </li>
         </ul>
       </nav>
@@ -59,7 +62,11 @@
               dokumen, hingga kemasan produk dengan kualitas cetak yang bermutu.
             </p>
 
-            <button class="cta">
+            <p class="changing-text" id="changingText">
+              Mencetak dengan kualitas terbaik...
+            </p>
+
+            <button class="cta" onclick="window.location.href='etalase_produk.html'">
               Pesan Sekarang <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
@@ -73,7 +80,6 @@
           serupa.
         </p>
         <div class="logo-scroll">
-          <!-- <img src="assets/paramount.png" alt="Paramount Bed" /> -->
           <img src="assets/mercure.png" alt="Mercure" />
           <img src="assets/bca.jpeg" alt="BCa" />
           <img src="assets/hsbc.jpeg" alt="hsbc" />
@@ -81,8 +87,6 @@
           <img src="assets/continental.png" alt="Intercontinental" />
           <img src="assets/coca.jpeg" alt="coca" />
           <img src="assets/season.png" alt="season" />
-
-          <!-- <img src="assets/mane.png" alt="Hilton" /> -->
         </div>
       </section>
 
@@ -174,7 +178,7 @@
               </a>
             </div>
           </div>
-      
+
           <div class="footer-column contact">
             <h3>
               <i class="fa-solid fa-address-book"></i>
@@ -183,7 +187,10 @@
             <ul class="contact-list">
               <li>
                 <i class="fa-solid fa-location-dot"></i>
-                <span>Jl. Designplus No.32, Bekasi,<br />Cikarang Selatan, 27381</span>
+                <span
+                  >Jl. Designplus No.32, Bekasi,<br />Cikarang Selatan,
+                  27381</span
+                >
               </li>
               <li>
                 <i class="fa-solid fa-phone"></i>
@@ -195,7 +202,7 @@
               </li>
             </ul>
           </div>
-      
+
           <div class="footer-column map-area">
             <h3>Temukan Kami di Google</h3>
             <iframe
@@ -209,12 +216,14 @@
             ></iframe>
           </div>
         </div>
-      
+
         <div class="footer-bottom">
           &copy; 2025 Designplus. Semua Hak Cipta Dilindungi.
         </div>
       </footer>
-      
     </main>
+
+    <script src="script/user.js"></script>
+    <script src="script/text-change.js"></script>
   </body>
 </html>

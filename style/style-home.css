@@ -36,7 +36,6 @@ header {
 .logo .blue {
   color: #1a47ff;
 }
-
 .search-bar {
   display: flex;
   align-items: center;
@@ -78,7 +77,6 @@ header {
   font-size: 18px;
 }
 
-/* ========== HERO SECTION ========== */
 .hero {
   padding: 120px 100px;
 }
@@ -126,7 +124,6 @@ header {
   background-color: #0f33cc;
 }
 
-/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -156,7 +153,11 @@ header {
 }
 
 .mitra-section p {
+<<<<<<< HEAD
   font-size: 20px; 
+=======
+  font-size: 20px;
+>>>>>>> main
   color: #666;
   margin-bottom: 70px;
 }
@@ -369,7 +370,7 @@ header {
   font-size: 1.4rem;
 }
 
-/* Kolom Kontak */
+
 .footer-column h3 {
   font-size: 1.1rem;
   font-weight: 700;
@@ -405,7 +406,7 @@ header {
   text-align: center;
 }
 
-/* Kolom Map */
+
 .footer-column.map-area h3 {
   color: var(--dark-blue);
 }
@@ -414,7 +415,6 @@ header {
   display: none;
 }
 
-/* Footer bawah */
 .footer-bottom {
   text-align: center;
   background-color: #1e2eb8;

@@ -29,7 +29,6 @@ html {
   background: url("../assets/register.jpg") no-repeat center center/cover;
 }
 
-/* ----- Register Form Style ----- */
 .register-box {
   width: 80%;
   max-width: 400px;
@@ -92,7 +91,6 @@ input {
   background-color: #0033cc;
 }
 
-/* Garis pemisah “Atau” */
 .divider {
   text-align: center;
   color: #a0a0a0;
@@ -118,7 +116,6 @@ input {
   right: 0;
 }
 
-/* Tombol Google */
 .google-btn {
   width: 100%;
   background-color: #fff;
