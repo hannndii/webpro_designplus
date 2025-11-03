@@ -62,11 +62,38 @@ ul.breadcrumb li a:hover{
     flex: 1;
 }
 
+/* Main product image: make it scale to its container while keeping aspect ratio.
+   If you want a fixed-height crop, set a max-height on the container and use
+   object-fit: cover on the image with width/height:100% instead. */
 .content-left img{
-    object-fit: cover;
-    height: 800px;
     width: 100%;
+    height: auto;          /* preserve aspect ratio */
+    max-height: 800px;    /* optional cap for very tall images */
+    object-fit: cover;     /* effective when both width and height are set */
     border-radius: 10px;
+    display: block;
+}
+
+.photo-slideshow{
+    display: flex;
+    gap: 10px;
+    margin: 16px 0px;
+    max-width: 800px;
+}
+
+.mini-photo{
+    height: 160px;
+    width: 160px;
+    border-radius: 10px;
+    overflow: hidden; /* ensure inner img is clipped to rounded corner box */
+}
+
+/* Make images inside the mini-photo box fit correctly */
+.mini-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .mini-option{
@@ -106,7 +133,7 @@ ul.breadcrumb li a:hover{
 .product-placeholder{
     display: inline-flex;
     position: absolute;
-    bottom: 160px;
+    bottom: 350px;
     left: 12px;
     padding: 12px;
     color: white;
