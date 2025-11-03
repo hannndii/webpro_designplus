@@ -95,17 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
             postalCode: document.querySelector("#input-postal").value
         };
 
-        // Simpan profil pribadi (untuk halaman user)
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        // Update currentUser
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
             const updatedUser = { ...currentUser, ...userData };
             localStorage.setItem("currentUser", JSON.stringify(updatedUser));
         }
 
-        // Update di daftar users (agar login pakai email baru bisa)
         const users = JSON.parse(localStorage.getItem("users")) || [];
         const userIndex = users.findIndex(user => user.email === currentUser.email);
 
@@ -134,32 +131,142 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // = = = = = = = = = WISHLIST = = = = = = = = =
+    function getWishlist() {
+        let wishlist = JSON.parse(localStorage.getItem("wishlistData"));
+        if (!wishlist) {
+            wishlist = [];
+        }
+        return wishlist;
+    }
+
+    function generateStars(rating) {
+        let starsHTML = '';
+        const totalStars = 5;
+        const fullStars = Math.floor(rating);
+        const halfStar = (rating - fullStars) >= 0.5 ? 1 : 0;
+        const emptyStars = totalStars - fullStars - halfStar;
+
+        for (let i = 0; i < fullStars; i++) starsHTML += '<i class="fa-solid fa-star"></i>';
+        if (halfStar) starsHTML += '<i class="fa-solid fa-star-half-stroke"></i>';
+        for (let i = 0; i < emptyStars; i++) starsHTML += '<i class="fa-regular fa-star"></i>';
+
+        return starsHTML;
+    }
+
+    function saveWishlist(wishlistArray) {
+        localStorage.setItem("wishlistData", JSON.stringify(wishlistArray));
+    }
+
+    function formatRupiah(number) {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            minimumFractionDigits: 0,
+        }).format(number);
+    }
+
+    // = = = = = = = = = SWICTH FORM = = = = = = = = =
     function switchSection(section) {
         let newContent = "";
 
-        switch (section) {
-            case "user-info":
-                newContent = userInfoContent;
-                break;
-            case "riwayat":
-                newContent = `
+        (async () => {
+            switch (section) {
+                case "user-info":
+                    newContent = userInfoContent;
+                    profileContent.innerHTML = newContent;
+
+                    const saveButton = document.querySelector(".save-btn");
+                    if (saveButton) {
+                        loadUserData();
+                        saveButton.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            saveUserData();
+                        });
+                    }
+                    break;
+                case "riwayat":
+                    newContent = `
                 <div class="placeholder">
                     <h2>Riwayat Transaksi</h2>
                     <p>List riwayat transaksi.</p>
                 </div>`;
-                break;
-            case "wishlist":
-                newContent = `
-                <div class="placeholder"><h2>Wishlist</h2><p>Produk favorit.</p></div>`;
-                break;
-            case "pengaturan":
-                newContent = `<div class="placeholder"><h2>Pengaturan</h2><p>Halaman pengaturan akun.</p></div>`;
-                break;
-            case "notifikasi":
-                newContent = `<div class="placeholder"><h2>Notifikasi</h2><p>Halaman notifikasi.</p></div>`;
-                break;
-        }
+                    profileContent.innerHTML = newContent;
+                    break;
+                case "wishlist":
+                    profileContent.innerHTML = `<div class="placeholder"><h2>Loading Wishlist...</h2></div>`;
 
-        profileContent.innerHTML = newContent;
+                    try {
+                        const response = await fetch('data/data_produk.json');
+                        if (!response.ok) throw new Error('Gagal memuat data produk');
+                        const allProducts = await response.json();
+
+                        const wishlistIds = getWishlist();
+                        const wishlistProducts = allProducts.filter(p => wishlistIds.includes(p.id));
+
+                        let wishlistHeaderHTML = `
+                        <div class="wishlist-container">
+                            <h2>Wishlist (${wishlistProducts.length})</h2>
+                            <div class="wishlist-list">`;
+
+                        let wishlistItemsHTML = '';
+                        if (wishlistProducts.length > 0) {
+                            wishlistItemsHTML = wishlistProducts.map(item => `
+                                <div class="wishlist-item-new">
+                                    <div class="item-image">
+                                        <img src="${item.file}" alt="${item.nama}" />
+                                    </div>
+                                    <div class="item-details">
+                                        <h4 class="item-name">${item.nama}</h4>
+                                        <p class="item-category">${item.kategori}</p>
+                                        <div class="item-rating">
+                                            ${generateStars(item.rating)}
+                                            <span>(${item.rating})</span>
+                                        </div>
+                                        <div class="item-price">
+                                            <span>${formatRupiah(item.harga)}</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-actions">
+                                        <button class="delete-wishlist-btn" data-id="${item.id}">
+                                            <i class="fa-regular fa-trash-can"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                        `).join('');
+                        } else {
+                            wishlistItemsHTML = "<p>Wishlist kamu masih kosong. Mulai tambahkan dari halaman etalase produk!</p>";
+                        }
+
+                        newContent = wishlistHeaderHTML + wishlistItemsHTML + `
+                        </div> </div> `;
+
+                        profileContent.innerHTML = newContent;
+
+                        document.querySelectorAll('.delete-wishlist-btn').forEach(button => {
+                            button.addEventListener('click', (e) => {
+                                const idToRemove = parseInt(button.dataset.id);
+                                let currentWishlist = getWishlist();
+                                currentWishlist = currentWishlist.filter(id => id !== idToRemove);
+                                saveWishlist(currentWishlist);
+                                switchSection('wishlist');
+                            });
+                        });
+
+                    } catch (error) {
+                        console.error(error);
+                        profileContent.innerHTML = `<div class="placeholder"><h2>Oops!</h2><p>Gagal memuat wishlist. Cek console.</p></div>`;
+                    }
+                    break;
+                case "pengaturan":
+                    newContent = `<div class="placeholder"><h2>Pengaturan</h2><p>Halaman pengaturan akun.</p></div>`;
+                    profileContent.innerHTML = newContent;
+                    break;
+                case "notifikasi":
+                    newContent = `<div class="placeholder"><h2>Notifikasi</h2><p>Halaman notifikasi.</p></div>`;
+                    profileContent.innerHTML = newContent;
+                    break;
+            }
+        })();
     }
 });

@@ -18,14 +18,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// = = = = = = = = = Fungsi untuk me-render semua kartu produk DAN menambahkan click listener = = = = = = = = =
+
+// ========== HELPER WISHLIST ==========
+function getWishlist() {
+  let wishlist = JSON.parse(localStorage.getItem("wishlistData"));
+  if (!wishlist) {
+    wishlist = []; 
+  }
+  return wishlist;
+}
+
+function saveWishlist(wishlistArray) {
+  localStorage.setItem("wishlistData", JSON.stringify(wishlistArray));
+}
+
+
+// ========== RENDER PRODUK DAN EVENT ==========
 function renderProducts(productData) {
   const gridContainer = document.querySelector(".product-grid");
   if (!gridContainer) return;
 
+  const currentWishlistIds = getWishlist();
+
   const productCardsHTML = productData.map(product => {
+    const isWished = currentWishlistIds.includes(product.id);
+    const heartIconClass = isWished ? 'fa-solid' : 'fa-regular';
+
     return `
       <div class="product-card" id="item-${product.id}" data-id="${product.id}">
+        <div class="wishlist-toggle" data-id="${product.id}">
+          <i class="${heartIconClass} fa-heart"></i>
+        </div>
         <img src="${product.file}" alt="${product.nama}" />
         <div class="card-info">
           <span class="product-category">${product.kategori}</span>
@@ -42,7 +65,7 @@ function renderProducts(productData) {
 
   gridContainer.innerHTML = productCardsHTML;
 
-// = = = = = = = = = Tambahkan event click ke setiap card = = = = = = = = = 
+  // ========== EVENT NAVIGASI PRODUK ==========
   const productCards = gridContainer.querySelectorAll(".product-card");
   productCards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -51,9 +74,34 @@ function renderProducts(productData) {
       window.location.href = `halamanproduk.html?id=${id}`;
     });
   });
+
+  // ========== EVENT WISHLIST ==========
+  const wishlistToggles = gridContainer.querySelectorAll(".wishlist-toggle");
+  wishlistToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const id = parseInt(toggle.dataset.id);
+      const icon = toggle.querySelector("i");
+      let currentWishlist = getWishlist();
+
+      if (currentWishlist.includes(id)) {
+        currentWishlist = currentWishlist.filter(itemId => itemId !== id);
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      } else {
+        currentWishlist.push(id);
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+      }
+      
+      saveWishlist(currentWishlist);
+    });
+  });
 }
 
-// = = = = = = = = = Fungsi untuk generate bintang rating dan format harga = = = = = = = = =
+
+// ========== GENERATE RATING ==========
 function generateStars(rating) {
   let starsHTML = '';
   const totalStars = 5;
@@ -68,7 +116,8 @@ function generateStars(rating) {
   return starsHTML;
 }
 
-// = = = = = = = = = Fungsi untuk format harga ke dalam Rupiah = = = = = = = = =
+
+// ========== FORMAT HARGA ==========
 function formatPrice(price) {
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',

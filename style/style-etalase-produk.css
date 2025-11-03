@@ -192,6 +192,7 @@ header {
 
 /* ====== CARD ====== */
 .product-card {
+  position: relative; /* [TAMBAHKAN INI] Konteks untuk positioning absolut */
   background-color: #fff;
   border: 1px solid var(--color-border, #e0e0e0);
   border-radius: 10px;
@@ -421,4 +422,40 @@ header {
   .search-bar {
     width: 90%;
   }
+}
+
+/* ====== [BARU] WISHLIST TOGGLE ====== */
+.wishlist-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px); /* Efek 'frost' di atas gambar */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.wishlist-toggle i {
+  font-size: 17px;
+  /* Selalu merah, sesuai permintaan "love merah" */
+  color: #e63946; 
+}
+
+/* Ikon hati yang 'regular' (belum di-wishlist) akan jadi garis tepi merah */
+
+/* Ikon hati yang 'solid' (sudah di-wishlist) akan jadi terisi penuh merah */
+
+.wishlist-toggle:hover {
+  transform: scale(1.1);
+}
+
+.wishlist-toggle:active {
+  transform: scale(0.9);
 }
