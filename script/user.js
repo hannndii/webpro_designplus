@@ -149,7 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
                 break;
             case "wishlist":
-                newContent = `<div class="placeholder"><h2>Wishlist</h2><p>Produk favorit.</p></div>`;
+                newContent = `
+                <div class="placeholder"><h2>Wishlist</h2><p>Produk favorit.</p></div>`;
                 break;
             case "pengaturan":
                 newContent = `<div class="placeholder"><h2>Pengaturan</h2><p>Halaman pengaturan akun.</p></div>`;
