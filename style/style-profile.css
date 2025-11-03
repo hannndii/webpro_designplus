@@ -182,7 +182,8 @@ body {
   margin-bottom: 8px;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
   padding: 12px 15px;
   border: 1px solid #d0d5dd;
   border-radius: 8px;
@@ -191,26 +192,51 @@ body {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
   border-color: #FD6B4E;
   box-shadow: 0 0 0 3px rgba(253, 107, 78, 0.1);
 }
 
-.save-btn {
-  background-color: #1a47ff;
-  color: #fff;
-  border: none;
-  padding: 14px 30px;
+/* Tambahan spacing untuk textarea Location */
+.form-group textarea#input-location {
+  resize: vertical;
+  margin-bottom: 25px;
+}
+
+/* ===== BUTTONS PROFIL ===== */
+.profile-form .save-btn,
+.profile-form .delete-btn {
+  display: inline-block;
+  width: 150px;           /* lebar sama */
+  padding: 14px 0;        /* tinggi sama */
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  text-align: center;
   transition: background 0.3s ease;
+  margin-top: 15px;
 }
 
-.save-btn:hover {
+/* Warna masing-masing tombol */
+.profile-form .save-btn {
+  background-color: #1a47ff;
+  color: #fff;
+}
+
+.profile-form .save-btn:hover {
   background-color: #051f86;
+}
+
+.profile-form .delete-btn {
+  background-color: #fd4b4b;
+  color: #fff;
+}
+
+.profile-form .delete-btn:hover {
+  background-color: #c9302c;
 }
 
 /* ===== Responsif ===== */
@@ -277,3 +303,22 @@ body {
   color: #1a47ff;
 }
 
+/* Untuk tombol toggle password */
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: #FD6B4E;
+}
