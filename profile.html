@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profil - Designplus</title>
 
-    <!-- Icon & Font -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -15,13 +14,11 @@
       rel="stylesheet"
     />
 
-    <!-- Style -->
     <link rel="stylesheet" href="style/style-home.css" />
     <link rel="stylesheet" href="style/style-profile.css" />
   </head>
 
   <body>
-    <!-- HEADER -->
     <header>
       <nav class="navbar">
         <div class="logo">
@@ -53,32 +50,84 @@
     </header>
 
     <main>
-      <section class="profile-section">
-        <div class="profile-card">
-          <div class="profile-header">
-            <i class="fa-regular fa-user profile-icon"></i>
-            <h2 id="profileName">Nama Pengguna</h2>
-            <p id="profileEmail">Email</p>
+      <div class="profile-container">
+        <aside class="profile-sidebar">
+          <h2 class="sidebar-title">User Profile</h2>
+          <nav class="sidebar-nav">
+            <ul>
+              <li class="active">
+                <a href="#"><i class="fa-regular fa-user"></i> User info</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-regular fa-heart"></i> Riwayat Transaksi</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-regular fa-bookmark"></i> Wishlist</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-cog"></i> Pengaturan</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-regular fa-bell"></i> Notifications</a>
+              </li>
+            </ul>
+          </nav>
+          <a href="#" class="sidebar-logout" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Log out
+          </a>
+        </aside>
+
+        <section class="profile-content">
+          <div class="profile-header-main">
+            <div class="profile-picture-container">
+              <div class="profile-picture-placeholder">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <button class="edit-icon">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+            </div>
+            <div class="profile-user-info">
+              <h3 id="profileName">Nama Pengguna</h3>
+              <p>Buah Batu, Kota Bandung</p>
+            </div>
           </div>
 
-          <div class="profile-info">
-            <div class="info-item">
-              <i class="fa-solid fa-envelope"></i>
-              <span id="emailText">example@gmail.com</span>
-            </div>
-            <div class="info-item">
-              <i class="fa-solid fa-user-tag"></i>
-              <span id="roleText">Pengguna Designplus</span>
-            </div>
-          </div>
+          <form class="profile-form" onsubmit="event.preventDefault(); alert('Perubahan disimpan (contoh)!');">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="input-name">Name</label>
+                <input type="text" id="input-name" placeholder="e.g. Sara" />
+              </div>
+              <div class="form-group">
+                <label for="input-full-name">Full Name</label>
+                <input type="text" id="input-full-name" placeholder="e.g. Tancredi" />
+              </div>
 
-          <button class="logout-btn" id="logoutBtn">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-          </button>
-        </div>
-      </section>
+              <div class="form-group">
+                <label for="profileEmail">Email Address</label>
+                <input type="email" id="profileEmail" placeholder="email@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="input-phone">Phone Number</label>
+                <input type="tel" id="input-phone" placeholder="(+98) 9123728167" />
+              </div>
+
+              <div class="form-group">
+                <label for="input-location">Location</label>
+                <input type="text" id="input-location" placeholder="e.g. New York, USA" />
+              </div>
+              <div class="form-group">
+                <label for="input-postal">Postal Code</label>
+                <input type="text" id="input-postal" placeholder="23728167" />
+              </div>
+            </div>
+
+            <button type="submit" class="save-btn">Save Changes</button>
+          </form>
+        </section>
+      </div>
     </main>
-
     <footer class="site-footer">
       <div class="footer-main">
         <div class="footer-column about">
@@ -135,7 +184,7 @@
       </div>
 
       <div class="footer-bottom">
-        &copy; 2025 Designplus. Semua Hak Cipta Dilindungi.
+        © 2025 Designplus. Semua Hak Cipta Dilindungi.
       </div>
     </footer>
     <script src="script/user.js"></script>
