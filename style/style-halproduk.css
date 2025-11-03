@@ -13,6 +13,10 @@ header {
     z-index: 1000;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 main {
     padding: 100px 128px;
 }
@@ -62,9 +66,6 @@ ul.breadcrumb li a:hover{
     flex: 1;
 }
 
-/* Main product image: make it scale to its container while keeping aspect ratio.
-   If you want a fixed-height crop, set a max-height on the container and use
-   object-fit: cover on the image with width/height:100% instead. */
 .content-left img{
     width: 100%;
     height: auto;          /* preserve aspect ratio */
@@ -99,9 +100,10 @@ ul.breadcrumb li a:hover{
 .mini-option{
     display: flex;
     list-style: none;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-radius: 10px;
     background-color: #E9EBFC;
+    margin-bottom: 16px;
 }
 
 .mini-option a{
@@ -133,7 +135,7 @@ ul.breadcrumb li a:hover{
 .product-placeholder{
     display: inline-flex;
     position: absolute;
-    bottom: 350px;
+    bottom: 360px;
     left: 12px;
     padding: 12px;
     color: white;
@@ -191,14 +193,14 @@ ul.breadcrumb li a:hover{
 }
 
 .rating{
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #6B6B6B;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6B6B6B;
 }
 
 .rating .star{
-  color: #FFC107;
+    color: #FFC107;
 }
 
 .divider{
@@ -375,7 +377,7 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: #6B78EA;
+    background: #2236E0;
     color: #FFFFFF;
 }
 
@@ -389,8 +391,8 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 10px;
     font-size: 16px;
     background: #FFFFFF;
-    border: 2px solid #6B78EA;
-    color: #6B78EA;
+    border: 2px solid #2236E0;
+    color: #2236E0;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -400,7 +402,107 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .btn-buy:hover {
-    background: #5563D5;
+    background: #18269F;
+}
+
+.container-detail{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.title-header {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#shipping > p{
+    margin-left: 38px;
+    color: #AEACAC;
+}
+
+.product-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.product-menu a{
+    position: relative;
+    text-decoration: none;
+    font-size: 18px;
+    color: #AEACAC;
+    padding: 12px 24px;
+    transition: color 0.3 ease;
+}
+
+.product-menu a.active{
+    color: #2236E0;
+}
+
+.product-menu a.active::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #2236E0;
+    border-radius: 2px;
+}
+
+.product-menu a:hover{
+    color: #2236E0;
+}
+
+.tab-content{
+    display: none;
+    text-align: left;
+    margin-left: 16px;
+}
+
+.tab-content.active{
+    display: block;
+}
+
+.tab-content ul li{
+    list-style: none;
+}
+
+.tab-content img{
+    height: 800px;
+}
+
+table, td, th{
+    border: 1px solid #BAC1F5;
+    text-align: left;
+    border-radius: 2px;
+}
+
+th{
+    background-color: #E9EBFC;
+    color: #2236E0;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td{
+    padding: 10px;
+}
+
+table + p{
+    padding-top: 16px;
+    color: #AEACAC;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
 }
 
 /* Large tablets / small laptops */
