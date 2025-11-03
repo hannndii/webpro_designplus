@@ -42,8 +42,20 @@ function calculateTotals(order) {
 function renderOrder(order, totals) {
   document.getElementById('product-name').textContent = order.productName;
   document.getElementById('material').textContent = order.material;
-  document.getElementById('color').textContent = order.color || '-';
+
+  const colorContainer = document.querySelector('.item-swatch');
+  if (order.color) {
+    colorContainer.style.backgroundColor = getColorCode(order.color);
+    document.getElementById('color').textContent = order.color;
+  }
+
   document.getElementById('design').textContent = order.design;
+
+  const productImg = document.querySelector('.item-product-img img');
+  if (productImg && order.productImage) {
+    productImg.src = order.productImage;
+    productImg.alt = order.productName;
+  }
   
   document.getElementById('price-product').textContent = formatRp(order.price);
   document.getElementById('price-material').textContent = formatRp(0);
@@ -55,6 +67,17 @@ function renderOrder(order, totals) {
   document.getElementById('discount-amount').textContent = formatRp(totals.discount);
   document.getElementById('tax-amount').textContent = formatRp(totals.tax);
   document.getElementById('subtotal-amount').textContent = formatRp(totals.total);
+}
+
+function getColorCode(colorName) {
+  const colorMap = {
+    'Putih': '#FFFFFF',
+    'Hitam': '#000000',
+    'Merah': '#FF5733',
+    'Hijau': '#4CAF50',
+    'Kuning': '#FFC107'
+  };
+  return colorMap[colorName] || '#FFFFFF';
 }
 
 async function renderAddressDropdown() {
