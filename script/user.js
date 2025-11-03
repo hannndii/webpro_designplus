@@ -185,14 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         });
                     }
                     break;
-                case "riwayat":
-                    newContent = `
-                <div class="placeholder">
-                    <h2>Riwayat Transaksi</h2>
-                    <p>List riwayat transaksi.</p>
-                </div>`;
-                    profileContent.innerHTML = newContent;
-                    break;
                 case "wishlist":
                     profileContent.innerHTML = `<div class="placeholder"><h2>Loading Wishlist...</h2></div>`;
 
