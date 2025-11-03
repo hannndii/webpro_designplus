@@ -1,0 +1,34 @@
+[
+  {
+    "id" : 1,
+    "produk" : "Kaos",
+    "bahan" : ["Polyester", "CVC", "Satin", "Cotton Carded", "Cotton Combed"],
+    "harga" : [20000, 23000, 17000, 18000, 20000],
+    "warna" : ["Putih", "Hitam", "Merah", "Hijau", "Kuning"],
+    "desain" : ["Standard", "Custom"]
+  },
+  {
+    "id" : 2,
+    "produk" : "Banner",
+    "bahan" : ["Luster", "Flexi China", "Flexi Korea", "Vinyl(PVC)", "Mesh Banner", "Canvas", "Kain Polyester"],
+    "harga" : [5000, 8000, 8500, 7000, 10000, 12000, 15000],
+    "warna" : [],
+    "desain" : ["Standard", "Custom"]
+  },
+  {
+    "id" : 3,
+    "produk" : "Brosur",
+    "bahan" : ["Art Paper", "Art Carton", "Ivory", "HVS", "Kraft"],
+    "harga" :[1500, 3000, 2500, 1000, 5000],
+    "warna" : [],
+    "desain" : ["Standard", "Custom"]
+  },
+  {
+    "id" : 4,
+    "produk" : "Buku",
+    "bahan" : ["50 Hal", "100 Hal", "250 Hal", "500 Hal", "1000 Hal"],
+    "harga" : [12000, 15000, 17500, 20000, 25000],
+    "warna" : [],
+    "desain" : ["Standard", "Custom"]
+  }
+]

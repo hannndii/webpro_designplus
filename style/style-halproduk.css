@@ -6,15 +6,15 @@
 }
 
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 main {
-    padding: 0px 128px;
+    padding: 100px 128px;
 }
 
 .bc-container{
@@ -58,10 +58,14 @@ ul.breadcrumb li a:hover{
     position: relative;
 }
 
+.content-left, .content-right{
+    flex: 1;
+}
+
 .content-left img{
     object-fit: cover;
-    height: 600px;
-    width: 600px;
+    height: 800px;
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -102,7 +106,7 @@ ul.breadcrumb li a:hover{
 .product-placeholder{
     display: inline-flex;
     position: absolute;
-    bottom: 240px;
+    bottom: 160px;
     left: 12px;
     padding: 12px;
     color: white;
@@ -147,8 +151,8 @@ ul.breadcrumb li a:hover{
 }
 
 .product-info ul li{
-  color: #6B6B6B;
-  font-size: 16px;
+    color: #6B6B6B;
+    font-size: 16px;
 }
 
 .product-info ul li span{
@@ -421,7 +425,7 @@ input[type="number"]::-webkit-inner-spin-button {
     }
 
     .product-placeholder{
-        bottom: 16px;
+        bottom: 160px;
         left: 12px;
         font-size: 14px;
         padding: 8px 10px;
@@ -461,6 +465,8 @@ input[type="number"]::-webkit-inner-spin-button {
 
     .product-info > p{ font-size: 22px; }
 
+    .product-placeholder{bottom: 150px;}
+
     .product-type span{ padding: 6px 8px; font-size: 13px; }
 
     .material-options, .design-options { gap: 8px; }
@@ -471,7 +477,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
     input[type='number'] { width: 76px; }
 
-    .subtotal { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .subtotal { flex-direction: row; align-items: flex-start; gap: 8px; }
 
     .total-price { font-size: 20px; }
 
