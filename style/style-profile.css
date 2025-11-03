@@ -388,3 +388,235 @@ body {
 .delete-wishlist-btn:hover {
   color: #e63946;
 }
+
+
+/* = = = = = = = = SETTING FORM = = = = = = = = */
+.settings-container h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+.settings-section {
+  margin-bottom: 35px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.settings-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.settings-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.settings-section .form-group {
+  max-width: 450px; 
+  margin-bottom: 15px;
+}
+
+.settings-section .save-btn {
+  margin-top: 10px;
+}
+
+.notification-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  max-width: 600px;
+}
+
+.toggle-info strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.toggle-info p {
+  font-size: 14px;
+  color: #777;
+  margin: 4px 0 0 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #1a47ff; 
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.danger-zone {
+  border-radius: 12px;
+  padding: 45px;
+  background-color: #e63946;
+}
+
+.danger-zone h3 {
+  color: #ffffff;
+}
+
+.danger-zone p {
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.delete-btn {
+  background-color: #ffffff;
+  color: black;
+  border: none;
+}
+
+.delete-btn:hover {
+  background-color: #c02d3a;
+  color: #ffffff;
+}
+
+/* ===== NOTIFIKASI ===== */
+.notifications-container h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start; /* Konten align ke atas */
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.notification-item:hover {
+  background-color: #f8f9fa; /* Tambah hover sederhana untuk semua item */
+}
+
+.notif-icon-container {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #f0f4f8; /* Latar belakang abu-abu muda netral */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.notif-content {
+  flex: 1; /* Ambil sisa ruang */
+}
+
+.notif-content strong {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.notif-content p {
+  font-size: 15px;
+  color: #555;
+  margin: 4px 0 0 0;
+}
+
+.notif-timestamp {
+  font-size: 13px;
+  color: #777;
+  margin-top: 8px;
+  display: block;
+}
+
+/* --- [BARU] Styling Tombol Hapus --- */
+.notif-action {
+  flex-shrink: 0;
+  margin-left: auto; /* Dorong tombol ke paling kanan */
+  padding-left: 15px; /* Beri jarak dari konten */
+  margin-top: -4px; /* Sedikit ke atas agar sejajar ikon */
+}
+
+.delete-notif-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888; /* Warna ikon netral */
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.delete-notif-btn i {
+  font-size: 17px;
+}
+
+.delete-notif-btn:hover {
+  background-color: #f1f3f5; /* Latar abu-abu saat hover */
+  color: #e63946; /* Ikon jadi merah saat hover */
+}

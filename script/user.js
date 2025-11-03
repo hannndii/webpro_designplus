@@ -259,12 +259,164 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     break;
                 case "pengaturan":
-                    newContent = `<div class="placeholder"><h2>Pengaturan</h2><p>Halaman pengaturan akun.</p></div>`;
+                    newContent = `
+                <div class="settings-container">
+                    <h2>Pengaturan Akun</h2>
+                    
+                    <div class="settings-section">
+                        <h3>Ubah Kata Sandi</h3>
+                        <div class="form-group">
+                            <label for="current-password">Kata Sandi Saat Ini</label>
+                            <input type="password" id="current-password" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Kata Sandi Baru</label>
+                            <input type="password" id="new-password" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Konfirmasi Kata Sandi Baru</label>
+                            <input type="password" id="confirm-password" placeholder="••••••••">
+                        </div>
+                        <button class="save-btn" id="save-password-btn">Update Kata Sandi</button>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>Preferensi Notifikasi</h3>
+                        <div class="notification-toggle">
+                            <div class="toggle-info">
+                                <strong>Promo dan Penawaran</strong>
+                                <p>Dapatkan info terbaru soal diskon dan produk baru.</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="notification-toggle">
+                            <div class="toggle-info">
+                                <strong>Update Status Pesanan</strong>
+                                <p>Kirim email saat pesanan Anda diproses atau dikirim.</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-section danger-zone">
+                        <h3>Zona Bahaya</h3>
+                        <p>Tindakan berikut akan menghapus data Anda secara permanen dan tidak dapat dibatalkan.</p>
+                        <button class="save-btn delete-btn" id="delete-account-btn">Hapus Akun Saya</button>
+                    </div>
+                </div>
+                `;
                     profileContent.innerHTML = newContent;
+
+                    const savePassBtn = document.getElementById('save-password-btn');
+                    if (savePassBtn) {
+                        savePassBtn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            alert("Logika update password belum ada");
+                        });
+                    }
+
+                    const deleteAccBtn = document.getElementById('delete-account-btn');
+                    if (deleteAccBtn) {
+                        deleteAccBtn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (confirm("Apakah Anda YAKIN ingin menghapus akun ini? Tindakan ini tidak dapat dibatalkan.")) {
+                                alert("Logika hapus akun belum ada");
+                            }
+                        });
+                    }
                     break;
                 case "notifikasi":
-                    newContent = `<div class="placeholder"><h2>Notifikasi</h2><p>Halaman notifikasi.</p></div>`;
+                    newContent = `
+                <div class="notifications-container">
+                    <h2>Notifikasi</h2>
+                    
+                    <div class="notifications-list">
+                        <div class="notification-item">
+                            <div class="notif-icon-container">
+                                <i class="fa-solid fa-tags"></i>
+                            </div>
+                            <div class="notif-content">
+                                <strong>Promo Spesial Hari Ini!</strong>
+                                <p>Dapatkan diskon 50% untuk cetak spanduk. Cek sekarang!</p>
+                                <span class="notif-timestamp">Baru saja</span>
+                            </div>
+                            <div class="notif-action">
+                                <button class="delete-notif-btn" title="Hapus notifikasi">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notif-icon-container">
+                                <i class="fa-solid fa-truck"></i>
+                            </div>
+                            <div class="notif-content">
+                                <strong>Pesanan Dikirim</strong>
+                                <p>Pesanan Anda #12345 (Kaos Tim) telah dikirim.</p>
+                                <span class="notif-timestamp">2 jam yang lalu</span>
+                            </div>
+                            <div class="notif-action">
+                                <button class="delete-notif-btn" title="Hapus notifikasi">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notif-icon-container">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+                            <div class="notif-content">
+                                <strong>Pembayaran Berhasil</strong>
+                                <p>Pembayaran untuk pesanan #12345 telah kami terima.</p>
+                                <span class="notif-timestamp">1 hari yang lalu</span>
+                            </div>
+                            <div class="notif-action">
+                                <button class="delete-notif-btn" title="Hapus notifikasi">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notif-icon-container">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div class="notif-content">
+                                <strong>Akun Diperbarui</strong>
+                                <p>Informasi profil Anda berhasil diperbarui.</p>
+                                <span class="notif-timestamp">3 hari yang lalu</span>
+                            </div>
+                            <div class="notif-action">
+                                <button class="delete-notif-btn" title="Hapus notifikasi">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
                     profileContent.innerHTML = newContent;
+
+                    const deleteButtons = profileContent.querySelectorAll('.delete-notif-btn');
+                    deleteButtons.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            e.stopPropagation(); 
+
+                            const itemToRemove = button.closest('.notification-item');
+                            if (itemToRemove) {
+                                itemToRemove.remove();
+                                // Datanya masih hardcoded di HTML.
+                            }
+                        });
+                    });
                     break;
             }
         })();
