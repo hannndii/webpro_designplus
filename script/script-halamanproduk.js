@@ -147,13 +147,12 @@ productForm.addEventListener('submit', function(e) {
     design: formData.get('design'),
     quantity: parseInt(formData.get('quantity')),
     price: parseInt(document.querySelector('.option-header .price').textContent.replace(/[^\d]/g, '')),
-    payment_method: 'bca', // default
-    created_at: new Date().toISOString()
+    payment_method: 'bca',
+    created_at: new Date().toISOString(),
+    productImage: document.querySelector('.content-left img').src
   };
 
   // Save order to localStorage
   localStorage.setItem('current_order', JSON.stringify(order));
-  
-  // Redirect to payment page
   window.location.href = 'paymentpage.html';
 });
