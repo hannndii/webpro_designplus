@@ -370,14 +370,11 @@ input[type="radio"]:checked::after {
   margin: 0;
 }
 
-/* variant khusus agar dropdown coupon tampil rapi di bawah banner */
 .coupon-dropdown {
   margin-top: 8px;
 }
 
-/* ketika dropdown terlihat, beri ruang di card agar layout tenang */
-.card .dropdown + * {
-}
+.card .dropdown + * {}
 
 /* --- Bagian Footer --- */
 footer {

@@ -122,15 +122,38 @@ qtyBtns.forEach(btn => {
     });
 });
 
-productForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const selections = {
-        material: formData.get('material'),
-        color: formData.get('color'),
-        design: formData.get('design'),
-        quantity: formData.get('quantity')
-    };
+// productForm.addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     const formData = new FormData(this);
+//     const selections = {
+//         material: formData.get('material'),
+//         color: formData.get('color'),
+//         design: formData.get('design'),
+//         quantity: formData.get('quantity')
+//     };
     
-    console.log('Selected options:', selections);
+//     console.log('Selected options:', selections);
+// });
+
+productForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const order = {
+    id: Date.now(),
+    productName: document.getElementById('product-name').textContent,
+    material: formData.get('material'),
+    color: formData.get('color'),
+    design: formData.get('design'),
+    quantity: parseInt(formData.get('quantity')),
+    price: parseInt(document.querySelector('.option-header .price').textContent.replace(/[^\d]/g, '')),
+    payment_method: 'bca', // default
+    created_at: new Date().toISOString()
+  };
+
+  // Save order to localStorage
+  localStorage.setItem('current_order', JSON.stringify(order));
+  
+  // Redirect to payment page
+  window.location.href = 'paymentpage.html';
 });
