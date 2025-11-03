@@ -1,0 +1,14 @@
+[
+  {
+    "code": "KU10",
+    "amount": 10000,
+    "valid": true,
+    "description": "Potongan Rp10.000"
+  },
+  {
+    "code": "HEMAT20",
+    "amount": 20000,
+    "valid": true,
+    "description": "Potongan Rp20.000"
+  }
+]
