@@ -13,6 +13,7 @@ productForm.addEventListener('change', function(e) {
     document.getElementById('color').innerText = color;
     document.getElementById('design-option').innerText = design;
     document.getElementById('total').innerText = quantity;
+    document.getElementById('nama-produk').innerText = `Kaos ${material}`
 });
 
 qtyBtns.forEach(btn => {
@@ -41,6 +42,10 @@ productForm.addEventListener('submit', function(e) {
     console.log('Selected options:', selections);
 });
 
-document.getElementById('buy-button').onclick = function() {
-    window.location.href = 'paymentpage.html'
+// document.getElementById('buy-button').onclick = function() {
+//     window.location.href = 'paymentpage.html'
+// }
+
+function subtotal(materialCost, colorCost, designCost, totalCost){
+    document.getElementById('materialCost').value;
 }
