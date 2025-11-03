@@ -122,18 +122,23 @@ qtyBtns.forEach(btn => {
     });
 });
 
-// productForm.addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     const formData = new FormData(this);
-//     const selections = {
-//         material: formData.get('material'),
-//         color: formData.get('color'),
-//         design: formData.get('design'),
-//         quantity: formData.get('quantity')
-//     };
-    
-//     console.log('Selected options:', selections);
-// });
+const menuLinks = document.querySelectorAll('.product-menu a');
+const tabContents = document.querySelectorAll('.tab-content');
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    menuLinks.forEach(l => l.classList.remove('active'));
+    tabContents.forEach(tab => tab.classList.remove('active'));
+    link.classList.add('active');
+    const target = link.getAttribute('data-tab');
+    document.getElementById(target).classList.add('active');
+  });
+});
+
+function productMenuContent(){
+
+}
 
 productForm.addEventListener('submit', function(e) {
   e.preventDefault();
