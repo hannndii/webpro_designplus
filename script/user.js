@@ -117,4 +117,49 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Perubahan berhasil disimpan!");
     }
 
+    const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
+    const profileContent = document.getElementById("profileContent");
+
+    const userInfoContent = profileContent.innerHTML;
+
+    sidebarLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            document.querySelectorAll(".sidebar-nav li").forEach(li => li.classList.remove("active"));
+            link.parentElement.classList.add("active");
+
+            const section = link.dataset.section;
+            switchSection(section);
+        });
+    });
+
+    function switchSection(section) {
+        let newContent = "";
+
+        switch (section) {
+            case "user-info":
+                newContent = userInfoContent;
+                break;
+            case "riwayat":
+                newContent = `
+                <div class="placeholder">
+                    <h2>Riwayat Transaksi</h2>
+                    <p>List riwayat transaksi.</p>
+                </div>`;
+                break;
+            case "wishlist":
+                newContent = `
+                <div class="placeholder"><h2>Wishlist</h2><p>Produk favorit.</p></div>`;
+                break;
+            case "pengaturan":
+                newContent = `<div class="placeholder"><h2>Pengaturan</h2><p>Halaman pengaturan akun.</p></div>`;
+                break;
+            case "notifikasi":
+                newContent = `<div class="placeholder"><h2>Notifikasi</h2><p>Halaman notifikasi.</p></div>`;
+                break;
+        }
+
+        profileContent.innerHTML = newContent;
+    }
 });
