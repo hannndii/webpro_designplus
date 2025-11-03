@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).format(number);
     }
 
-    // = = = = = = = = = SWICTH FORM = = = = = = = = =
+    // = = = = = = = = = SWICTH FORM (Dynamic DOM) = = = = = = = = =
     function switchSection(section) {
         let newContent = "";
 
@@ -413,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             const itemToRemove = button.closest('.notification-item');
                             if (itemToRemove) {
                                 itemToRemove.remove();
-                                // Datanya masih hardcoded di HTML.
+                                // Data notifnya masih hardcoded.
                             }
                         });
                     });
