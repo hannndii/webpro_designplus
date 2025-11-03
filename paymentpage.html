@@ -86,8 +86,8 @@
             <a href="#" id="change-address-btn" class="card-link">Pilih Alamat</a>
           </div>
           <div class="card-body">
-            <p class="address-label" id="address-label">Kantor - Muhammad Fulan</p>
-            <p id="address-text">Jl. Moch Yamin No.26, Bojongsoang, Kabupaten Bandung, Jawa Barat, 18721</p>
+            <p class="address-label" id="address-label">-</p>
+            <p id="address-text">-</p>
             <div id="address-dropdown" class="dropdown" hidden></div>
           </div>
         </section>
@@ -149,5 +149,25 @@
     </div>
 
     <script src="script/paymentpage.js"></script>
+    
+    <div id="modal-overlay" class="modal-overlay modal-hidden"></div>
+
+    <div id="confirm-modal" class="modal modal-hidden">
+      <div class="modal-content">
+        <p id="confirm-modal-text">Memproses... sebentar</p>
+        <div id="confirm-modal-actions" class="modal-actions">
+          </div>
+      </div>
+    </div>
+
+    <div id="cancel-modal" class="modal modal-hidden">
+      <div class="modal-content">
+        <p>Apa anda yakin?</p>
+        <div class="modal-actions">
+          <button id="modal-cancel-yes" class="btn-primary-modal btn-danger">Ya</button>
+          <button id="modal-cancel-no" class="btn-secondary-modal">Lanjutkan</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
