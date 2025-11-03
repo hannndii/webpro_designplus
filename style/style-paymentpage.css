@@ -1,335 +1,383 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 /* --- Bagian Global --- */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #E9EBFC;
-    color: #333;
-    line-height: 1.5;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #e9ebfc;
+  color: #333;
+  line-height: 1.5;
 }
 
 .container {
-    margin: 0 auto;
-    padding: 20px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 /* --- Bagian  Header --- */
 .brand-header {
-    font-size: 20px; 
-    font-weight: 700;
-    color: #2236E0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: #ffffff;
-    padding: 20px;
-    margin: -20px -20px 20px -20px; 
+  font-size: 20px;
+  font-weight: 700;
+  color: #2236e0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 20px;
+  margin: -20px -20px 20px -20px;
 }
 
 /* --- Bagain Card --- */
 .card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .card-title {
-    font-size: 24px;
-    font-weight: 600;
-    display: flex;
-    color: #2236E0;
-    align-items: center;
-    gap: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  color: #2236e0;
+  align-items: center;
+  gap: 8px;
 }
 
 .card-title-icon {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 5px;
 }
 
 .card-link {
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 /* --- Detail Pesanan --- */
 .order-details .card-link {
-    color: #e53935;
+  color: #e53935;
 }
 
 .order-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-    font-size: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 15px;
 }
 
 .order-item > span:last-of-type {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .item-label {
-    color: #555;
-    width: 130px;
-    flex-shrink: 0;
+  color: #555;
+  width: 130px;
+  flex-shrink: 0;
 }
 
 .item-value {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-    background-color: #E9EBFC;
-    border: 1px solid #6B78EA;
-    padding: 5px 8px;
-    border-radius: 5px;
-    color: #6B78EA;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  background-color: #e9ebfc;
+  border: 1px solid #6b78ea;
+  padding: 5px 8px;
+  border-radius: 5px;
+  color: #6b78ea;
 }
 
 .item-product-img {
-    width: 28px;
-    height: 28px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  background-color: #F5F6FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 }
 
 .item-product-img img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .item-swatch {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-}
-
-.swatch-combed {
-    background-color: #3b4b5a;
-}
-
-.swatch-white {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 100px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: 1px solid #6b78ea;
 }
 
 .order-summary {
-    border-top: 1px solid #f0f0f0;
-    padding-top: 20px;
-    margin-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .summary-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #AEACAC;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #aeacac;
+  margin-bottom: 10px;
 }
 
 .summary-row span:last-child {
-    font-weight: 500;
-    color: #333;
+  font-weight: 500;
+  color: #333;
 }
 
 .subtotal {
-    border-top: 1px solid #f0f0f0;
-    padding-top: 16px;
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 700;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 /* --- Alamat Pengiriman --- */
 .address-details p {
-    font-size: 14px;
-    color: #AEACAC;
-    margin: 0;
-    line-height: 1.6;
+  font-size: 14px;
+  color: #aeacac;
+  margin: 0;
+  line-height: 1.6;
 }
 
 .address-details .address-label {
-    font-weight: 600;
-    color: #333;
-    font-size: 15px;
-    margin-bottom: 4px;
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.address-details .card-link {
+  color: #2236e0;
+  font-weight: 500;
 }
 
 /* --- Metode Pembayaran --- */
 .payment-methods .card-link {
-    color: #444;
+  color: #444;
 }
 
 .payment-option {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
 }
 
 .payment-option-details {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-grow: 1;
 }
 
 .payment-option img {
-    height: 28px;
-    width: auto;
-    object-fit: contain;
+  height: 28px;
+  width: auto;
+  object-fit: contain;
 }
 
 .payment-option .logo-gopay {
-    height: 26px;
-    width: auto;
-    object-fit: contain;
+  height: 26px;
+  width: auto;
+  object-fit: contain;
 }
 
 .payment-option span {
-    font-weight: 500;
+  font-weight: 500;
+}
+
+.payment-option-details:hover {
+  cursor: pointer;
 }
 
 /* Radio Button */
 input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
 }
 
 input[type="radio"]:checked {
-    border-color: #6B78EA;
-    background-color: #6B78EA;
+  border-color: #6b78ea;
+  background-color: #6b78ea;
 }
 
 input[type="radio"]:checked::after {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* --- Banner Kupon --- */
 .coupon-banner {
-    background-color: #E9EBFC;
-    color: #6B78EA;
-    border-radius: 8px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    margin-bottom: 20px;
-    border: 2px solid #6B78EA;
+  background-color: #e9ebfc;
+  color: #6b78ea;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  border: 2px solid #6b78ea;
 }
 
 .coupon-icon-img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .coupon-text p {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 500;
-    color: #AEACAC;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #aeacac;
 }
 
 .coupon-text h3 {
-    font-size: 18px;
-    display: block;
-    font-weight: 500;
+  font-size: 18px;
+  display: block;
+  font-weight: 500;
 }
 
 .coupon-arrow {
-    margin-left: auto;
-    width: 30px;
-    height: 30px;
-    color: #6B78EA;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  color: #6b78ea;
 }
 
 /* --- Teks Syarat & Ketentuan --- */
 .legal-text {
-    font-size: 15px;
-    color: #888;
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 15px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .legal-text span {
-    text-decoration: underline;
-    font-weight: 500;
+  text-decoration: underline;
+  font-weight: 500;
 }
 
 /* Bagian Button */
 
 .action-buttons button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 15px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .action-buttons .btn-primary {
-    background-color: #328E6E;
-    color: white;
+  background-color: #328e6e;
+  color: white;
 }
 
 .action-buttons .btn-secondary {
-    background-color: white;
-    color: #DC2525;
-    border: 2px solid #DC2525;
+  background-color: white;
+  color: #dc2525;
+  border: 2px solid #dc2525;
 }
+
+/* Dropdown list untuk address / kupon */
+.dropdown {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e6e8ff;
+  border-radius: 8px;
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(102, 100, 255, 0.08);
+  overflow: hidden;
+}
+
+.dropdown .dropdown-item {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: white;
+  color: #222;
+}
+
+.dropdown .dropdown-item:hover {
+  background: #f5f6ff;
+}
+
+.dropdown .dropdown-item .meta {
+  color: #888;
+  font-size: 13px;
+}
+
+.dropdown .divider {
+  height: 1px;
+  background: #f0f0f5;
+  margin: 0;
+}
+
+.coupon-dropdown {
+  margin-top: 8px;
+}
+
+.card .dropdown + * {}
 
 /* --- Bagian Footer --- */
 footer {
-    text-align: center;
-    font-size: 14px;
-    background-color: #1E40AF;
-    color: white;
-    padding: 24px 20px; 
-    margin: 20px -20px -20px -20px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #1e40af;
+  color: white;
+  padding: 24px 20px;
+  margin: 20px -20px -20px -20px;
 }
