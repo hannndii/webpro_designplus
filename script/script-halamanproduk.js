@@ -2,30 +2,123 @@ const productForm = document.getElementById('product-form');
 const quantityInput = document.getElementById('quantity');
 const qtyBtns = document.querySelectorAll('.qty-btn');
 
+function getProductIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return parseInt(urlParams.get('id')) || 1;
+}
+
+// Fetch and load product data
+async function getData() {
+    try {
+        const response = await fetch("data/data_produk.json");
+        if (!response.ok) throw new Error('Failed to fetch product data');
+        
+        const data = await response.json();
+        const productId = getProductIdFromUrl();
+        const product = data.find(p => p.id === productId);
+        
+        if (product) {
+            renderDataFromJson(product);
+        } else {
+            console.error('Product not found');
+        }
+    } catch (error) {
+        console.error('Error loading product data:', error);
+    }
+}
+
+// Update all product-related elements on the page
+function renderDataFromJson(product) {
+    document.getElementById('nama_produk').innerText = product.nama;
+    document.title = `Jual ${product.nama} - Designplus`;
+    
+    document.getElementById('product-name').innerText = product.nama;
+    
+    const productImage = document.querySelector('.content-left img');
+    if (productImage) {
+        productImage.src = product.file;
+        productImage.alt = product.nama;
+    }
+
+    const ratingElement = document.querySelector('.rating');
+    if (ratingElement) {
+        ratingElement.innerHTML = `<i class="fa-solid fa-star star"></i>${product.rating}<span id="total-rating">(${randomNum(1000, 10000)} Rating)</span>`;
+    }
+
+    const basePriceElements = document.querySelectorAll('.price');
+    basePriceElements.forEach(el => {
+        const priceText = el.textContent;
+        if (priceText.includes('35.000')) {
+            el.textContent = `Rp${product.harga.toLocaleString('id-ID')}`;
+        }
+    });
+
+    updateTotal();
+}
+
+function randomNum(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    const randNumber = Math.random()*(max - min + 1) + min;
+    return Math.floor(randNumber);
+}
+
+// Calculate and update total price
+function updateTotal() {
+    const quantity = parseInt(quantityInput.value) || 1;
+    const basePriceEl = document.querySelector('.option-header .price');
+    const basePrice = parseInt(basePriceEl.textContent.replace(/[^\d]/g, '')) || 0;
+    
+    const designType = document.querySelector('input[name="design"]:checked').value;
+    const designCost = designType === 'Custom' ? 5000 : 0;
+    
+    const total = (basePrice + designCost) * quantity;
+    
+    const totalPriceEl = document.querySelector('.total-price');
+    if (totalPriceEl) {
+        totalPriceEl.textContent = `Rp${total.toLocaleString('id-ID')}`;
+    }
+}
+
+// Call getData when page loads
+document.addEventListener('DOMContentLoaded', getData);
+
+
+
+// Update form elements and recalculate total
 productForm.addEventListener('change', function(e) {
     const material = document.querySelector('input[name="material"]:checked').value;
     const color = document.querySelector('input[name="color"]:checked').value;
     const design = document.querySelector('input[name="design"]:checked').value;
     const quantity = parseInt(quantityInput.value);
 
-    document.getElementById('product-name').innerText = `Kaos ${material} ${color}`;
     document.getElementById('material').innerText = material;
     document.getElementById('color').innerText = color;
     document.getElementById('design-option').innerText = design;
     document.getElementById('total').innerText = quantity;
-    document.getElementById('nama-produk').innerText = `Kaos ${material}`
+    
+    const productName = document.getElementById('product-name').getAttribute('data-original-name') || 
+                       document.getElementById('product-name').innerText;
+    document.getElementById('product-name').setAttribute('data-original-name', productName);
+    document.getElementById('product-name').innerText = `${productName} - ${color}`;
+
+    updateTotal();
 });
 
 qtyBtns.forEach(btn => {
     btn.addEventListener('click', function() {
         const isPlus = this.classList.contains('plus');
-        const currentVal = parseInt(quantityInput.value);
+        const currentVal = parseInt(quantityInput.value) || 1;
         
         if (isPlus) {
             quantityInput.value = currentVal + 1;
         } else if (currentVal > 1) {
             quantityInput.value = currentVal - 1;
         }
+
+        // Update quantity display and recalculate total
+        document.getElementById('total').innerText = quantityInput.value;
+        updateTotal();
     });
 });
 
@@ -41,11 +134,3 @@ productForm.addEventListener('submit', function(e) {
     
     console.log('Selected options:', selections);
 });
-
-// document.getElementById('buy-button').onclick = function() {
-//     window.location.href = 'paymentpage.html'
-// }
-
-function subtotal(materialCost, colorCost, designCost, totalCost){
-    document.getElementById('materialCost').value;
-}
