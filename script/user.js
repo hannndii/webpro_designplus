@@ -1,165 +1,151 @@
 document.addEventListener("DOMContentLoaded", () => {
-    currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
+    // ===== NAVBAR =====
     const userDisplay = document.getElementById("userNameDisplay");
     const userMenu = document.getElementById("userMenu");
-
-    // ========== NAVBAR USER ==========
+  
     if (userDisplay && userMenu) {
-        if (currentUser) {
-            userDisplay.textContent = currentUser.name;
-            userDisplay.style.fontWeight = "600";
-            userDisplay.style.color = "#007bff";
-            userDisplay.style.marginLeft = "5px";
-
-            userMenu.addEventListener("click", (e) => {
-                e.preventDefault();
-                window.location.href = "profile.html";
-            });
-        } else {
-            userDisplay.textContent = "Tamu";
-            userDisplay.style.opacity = "0.7";
-            userDisplay.style.marginLeft = "5px";
-
-            userMenu.addEventListener("click", (e) => {
-                e.preventDefault();
-                window.location.href = "login.html";
-            });
-        }
+      if (currentUser) {
+        userDisplay.textContent = currentUser.name || "Pengguna";
+        userDisplay.style.fontWeight = "600";
+        userDisplay.style.color = "#007bff";
+        userDisplay.style.marginLeft = "5px";
+  
+        userMenu.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.location.href = "profile.html";
+        });
+      } else {
+        userDisplay.textContent = "Tamu";
+        userDisplay.style.opacity = "0.7";
+        userDisplay.style.marginLeft = "5px";
+  
+        userMenu.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.location.href = "login.html";
+        });
+      }
     }
-
-    // ========== BAGIAN PROFIL ==========
+  
+    // ===== BAGIAN PROFIL =====
     const profileName = document.getElementById("profileName");
+    const profileLocation = document.querySelector(".profile-user-info p");
     const profileEmail = document.getElementById("profileEmail");
     const logoutBtn = document.getElementById("logoutBtn");
-
-    if ((profileName || profileEmail || logoutBtn) && !currentUser) {
+    const passwordInput = document.querySelector("#input-password");
+    const togglePassword = document.querySelector(".toggle-password");
+    const deleteBtn = document.getElementById("deleteAccountBtn"); // <--- Tambahkan ini
+  
+    if (profileName || profileEmail || logoutBtn) {
+      if (!currentUser) {
         alert("Silakan login dulu buat liat profil.");
         window.location.href = "login.html";
         return;
-    }
-
-    if (currentUser && profileName) profileName.textContent = currentUser.name || "Pengguna";
-    if (currentUser && profileEmail) profileEmail.value = currentUser.email || "";
-
-    if (logoutBtn) {
+      }
+  
+      // ===== TAMPILKAN DATA USER DI FORM =====
+      document.querySelector("#input-name").value = currentUser.name || "";
+      document.querySelector("#input-full-name").value = currentUser.fullName || "";
+      document.querySelector("#profileEmail").value = currentUser.email || "";
+      document.querySelector("#input-phone").value = currentUser.phone || "";
+      document.querySelector("#input-location").value = currentUser.location || "";
+      document.querySelector("#input-postal").value = currentUser.postalCode || "";
+  
+      // ===== TAMPILKAN PASSWORD LAMA =====
+      if (passwordInput && currentUser.password) {
+        passwordInput.value = currentUser.password;
+      }
+  
+      if (profileName) profileName.textContent = currentUser.name || "Pengguna";
+      if (profileLocation) profileLocation.textContent = currentUser.location || "";
+  
+      // ===== LOGOUT =====
+      if (logoutBtn) {
         logoutBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const confirmLogout = confirm("Yakin mau logout?");
-            if (confirmLogout) {
-                localStorage.removeItem("currentUser");
-                alert("Kamu sudah logout.");
-                window.location.href = "home.html";
-            }
+          e.preventDefault();
+          if (confirm("Yakin mau logout?")) {
+            localStorage.removeItem("currentUser");
+            alert("Kamu sudah logout.");
+            window.location.href = "home.html";
+          }
         });
-    }
-
-    // ========== UPDATE DATA USER ==========
-    const saveButton = document.querySelector(".save-btn");
-    if (saveButton) {
-        loadUserData();
-        saveButton.addEventListener("click", (e) => {
-            e.preventDefault();
-            saveUserData();
+      }
+  
+      // ===== SAVE CHANGES =====
+      const saveBtn = document.querySelector(".save-btn");
+      if (saveBtn) {
+        saveBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          saveUserData();
         });
-    }
-
-    function loadUserData() {
-        const userData = JSON.parse(localStorage.getItem("userData")) || {};
-
-        document.querySelector("#input-name").value = userData.name || "";
-        document.querySelector("#input-full-name").value = userData.fullName || "";
-        document.querySelector("#profileEmail").value = userData.email || "";
-        document.querySelector("#input-phone").value = userData.phone || "";
-        document.querySelector("#input-location").value = userData.location || "";
-        document.querySelector("#input-postal").value = userData.postalCode || "";
-
-        if (userData.name && document.querySelector("#profileName")) {
-            document.querySelector("#profileName").textContent = userData.name;
-        }
-        if (userData.location && document.querySelector(".profile-user-info p")) {
-            document.querySelector(".profile-user-info p").textContent = userData.location;
-        }
-
-        if (userDisplay && userData.name) {
-            userDisplay.textContent = userData.name;
-        }
-    }
-
-    function saveUserData() {
-        const userData = {
-            name: document.querySelector("#input-name").value,
-            fullName: document.querySelector("#input-full-name").value,
-            email: document.querySelector("#profileEmail").value,
-            phone: document.querySelector("#input-phone").value,
-            location: document.querySelector("#input-location").value,
-            postalCode: document.querySelector("#input-postal").value
-        };
-
-        // Simpan profil pribadi (untuk halaman user)
-        localStorage.setItem("userData", JSON.stringify(userData));
-
-        // Update currentUser
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (currentUser) {
-            const updatedUser = { ...currentUser, ...userData };
-            localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-        }
-
-        // Update di daftar users (agar login pakai email baru bisa)
+      }
+  
+      function saveUserData() {
         const users = JSON.parse(localStorage.getItem("users")) || [];
-        const userIndex = users.findIndex(user => user.email === currentUser.email);
-
+        const oldEmail = currentUser.email;
+  
+        const updatedData = {
+          name: document.querySelector("#input-name").value.trim(),
+          fullName: document.querySelector("#input-full-name").value.trim(),
+          email: document.querySelector("#profileEmail").value.trim(),
+          phone: document.querySelector("#input-phone").value.trim(),
+          location: document.querySelector("#input-location").value.trim(),
+          postalCode: document.querySelector("#input-postal").value.trim(),
+        };
+  
+        if (passwordInput && passwordInput.value.trim()) {
+          updatedData.password = passwordInput.value.trim();
+        }
+  
+        // UPDATE currentUser
+        const newCurrentUser = { ...currentUser, ...updatedData };
+        localStorage.setItem("currentUser", JSON.stringify(newCurrentUser));
+  
+        // UPDATE USERS
+        const userIndex = users.findIndex((u) => u.email === oldEmail);
         if (userIndex !== -1) {
-            users[userIndex] = { ...users[userIndex], ...userData };
-            localStorage.setItem("users", JSON.stringify(users));
+          users[userIndex] = { ...users[userIndex], ...updatedData };
+          localStorage.setItem("users", JSON.stringify(users));
         }
-
+  
+        // UPDATE TAMPILAN
+        if (profileName) profileName.textContent = updatedData.name;
+        if (userDisplay) userDisplay.textContent = updatedData.name;
+        if (profileLocation) profileLocation.textContent = updatedData.location;
+  
         alert("Perubahan berhasil disimpan!");
-    }
-
-    const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
-    const profileContent = document.getElementById("profileContent");
-
-    const userInfoContent = profileContent.innerHTML;
-
-    sidebarLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            document.querySelectorAll(".sidebar-nav li").forEach(li => li.classList.remove("active"));
-            link.parentElement.classList.add("active");
-
-            const section = link.dataset.section;
-            switchSection(section);
+      }
+  
+      // ===== SHOW / HIDE PASSWORD =====
+      if (togglePassword && passwordInput) {
+        togglePassword.addEventListener("click", () => {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            togglePassword.classList.remove("fa-eye");
+            togglePassword.classList.add("fa-eye-slash");
+          } else {
+            passwordInput.type = "password";
+            togglePassword.classList.remove("fa-eye-slash");
+            togglePassword.classList.add("fa-eye");
+          }
         });
-    });
-
-    function switchSection(section) {
-        let newContent = "";
-
-        switch (section) {
-            case "user-info":
-                newContent = userInfoContent;
-                break;
-            case "riwayat":
-                newContent = `
-                <div class="placeholder">
-                    <h2>Riwayat Transaksi</h2>
-                    <p>List riwayat transaksi.</p>
-                </div>`;
-                break;
-            case "wishlist":
-                newContent = `
-                <div class="placeholder"><h2>Wishlist</h2><p>Produk favorit.</p></div>`;
-                break;
-            case "pengaturan":
-                newContent = `<div class="placeholder"><h2>Pengaturan</h2><p>Halaman pengaturan akun.</p></div>`;
-                break;
-            case "notifikasi":
-                newContent = `<div class="placeholder"><h2>Notifikasi</h2><p>Halaman notifikasi.</p></div>`;
-                break;
-        }
-
-        profileContent.innerHTML = newContent;
+      }
+  
+      // ===== DELETE ACCOUNT =====
+      if (deleteBtn) {
+        deleteBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (confirm("Yakin ingin menghapus akun ini? Semua data akan hilang.")) {
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users = users.filter(u => u.email !== currentUser.email);
+            localStorage.setItem("users", JSON.stringify(users));
+            localStorage.removeItem("currentUser");
+            alert("Akun berhasil dihapus!");
+            window.location.href = "home.html";
+          }
+        });
+      }
     }
-});
+  });
+  
