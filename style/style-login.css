@@ -26,7 +26,7 @@ html {
 
 .right {
   width: 85%;
-  background: url("assets/login.jpg") no-repeat center center/cover;
+  background: url("../assets/login.jpg") no-repeat center center/cover;
 }
 
 /* ----- Login Form Style ----- */
@@ -39,11 +39,33 @@ html {
   font-size: 26px;
   font-weight: 700;
   color: #1a44ff;
-  margin-bottom: 40px;
+  margin-bottom: 10px; /* dikurangi agar teks dinamis lebih dekat */
 }
 
 .dot {
   color: #1a44ff;
+}
+
+/* ✨ Teks Dinamis di bawah logo */
+.changing-text {
+  font-size: 1.25rem;
+  color: #444;
+  font-weight: 600;
+  margin-top: -5px;
+  margin-bottom: 25px;
+  text-align: left;
+  animation: fade 0.8s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h2 {

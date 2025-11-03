@@ -10,6 +10,14 @@ body {
   color: #222;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 /* ========== NAVBAR ========== */
 .navbar {
   display: flex;
@@ -28,14 +36,13 @@ body {
 .logo .blue {
   color: #1a47ff;
 }
-
 .search-bar {
   display: flex;
   align-items: center;
   background: #f0f2ff;
   padding: 8px 12px;
   border-radius: 10px;
-  width: 700px; /* ubah sesuai keinginan, misalnya 400px atau 50% */
+  width: 700px; 
   max-width: 600px;
 }
 
@@ -70,7 +77,6 @@ body {
   font-size: 18px;
 }
 
-/* ========== HERO SECTION ========== */
 .hero {
   padding: 120px 100px;
 }
@@ -118,7 +124,6 @@ body {
   background-color: #0f33cc;
 }
 
-/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -136,26 +141,26 @@ body {
 }
 .mitra-section {
   text-align: center;
-  padding: 140px 60px; /* area lebih tinggi */
+  padding: 140px 60px; 
   background-color: #fff;
 }
 
 .mitra-section h2 {
-  font-size: 42px; /* judul besar */
+  font-size: 42px; 
   font-weight: 800;
   margin-bottom: 16px;
   color: #000;
 }
 
 .mitra-section p {
-  font-size: 20px; /* teks deskripsi besar */
+  font-size: 20px;
   color: #666;
   margin-bottom: 70px;
 }
 
 .logo-scroll {
   display: flex;
-  gap: 140px; /* jarak antar logo lebar */
+  gap: 140px; 
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 40px 0;
@@ -172,7 +177,7 @@ body {
 }
 
 .logo-scroll img {
-  height: 90px; /* logo lebih besar */
+  height: 90px; 
   flex-shrink: 0;
   filter: grayscale(100%);
   transition: all 0.3s ease;
@@ -361,7 +366,7 @@ body {
   font-size: 1.4rem;
 }
 
-/* Kolom Kontak */
+
 .footer-column h3 {
   font-size: 1.1rem;
   font-weight: 700;
@@ -397,7 +402,7 @@ body {
   text-align: center;
 }
 
-/* Kolom Map */
+
 .footer-column.map-area h3 {
   color: var(--dark-blue);
 }
@@ -406,7 +411,6 @@ body {
   display: none;
 }
 
-/* Footer bawah */
 .footer-bottom {
   text-align: center;
   background-color: #1e2eb8;

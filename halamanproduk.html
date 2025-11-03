@@ -13,25 +13,32 @@
     <!-- Navbar Section -->
     <header>
       <nav class="navbar">
-        <div class="logo"><span class="blue">Design</span>plus.</div>
-
+        <div class="logo">
+          <a href="home.html">
+            <img src="assets/logo.png" alt="logo designplus" style="width: 120px;"/>
+          </a>
+        </div>
+  
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Cari produk" />
         </div>
-
-        <ul class="nav-links">
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Produk</a></li>
-          <li><a href="#">Layanan</a></li>
-          <li>
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa-regular fa-user"></i></a>
-          </li>
-        </ul>
-      </nav>
+        
+          <ul class="nav-links">
+            <li><a href="home.html">Beranda</a></li>
+            <li><a href="etalase_produk.html">Produk</a></li>
+            <li><a href="#">Layanan</a></li>
+            <li>
+              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+            <li>
+              <a href="#" id="userMenu">
+                <i class="fa-regular fa-user"></i>
+                <span id="userNameDisplay"></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
     </header>
 
     <!-- Main Section -->
@@ -40,8 +47,9 @@
         <div class="bc-container">
             <ul class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Etalase Produk</a></li>
-                <li id="nama-produk">Nama Produk</li>
+                <li><a href="#">Produk</a></li>
+                <li><a href="etalase_produk.html">Etalase Produk</a></li>
+                <li>Nama Produk</li>
             </ul>
         </div>
         <!-- Detail Produk -->
@@ -177,5 +185,6 @@
     </footer>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="script/script-halamanproduk.js"></script>
+    <script src="script/user.js"></script>
   </body>
 </html>

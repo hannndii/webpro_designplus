@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil - Designplus</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style/style-home.css" />
+    <link rel="stylesheet" href="style/style-profile.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="home.html">
+            <img src="assets/logo.png" alt="logo designplus" style="width: 120px;"/>
+          </a>
+        </div>
+  
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Cari produk" />
+        </div>
+        
+        <ul class="nav-links">
+          <li><a href="home.html    ">Beranda</a></li>
+          <li><a href="etalase_produk.html">Produk</a></li>
+          <li><a href="#">Layanan</a></li>
+          <li>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+          </li>
+          <li>
+            <a href="#" id="userMenu">
+              <i class="fa-regular fa-user"></i>
+              <span id="userNameDisplay"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="profile-container">
+        <aside class="profile-sidebar">
+          <h2 class="sidebar-title">User Profile</h2>
+          <nav class="sidebar-nav">
+            <ul>
+              <li class="active">
+                <a href="#"><i class="fa-regular fa-user"></i> User info</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-regular fa-heart"></i> Riwayat Transaksi</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-regular fa-bookmark"></i> Wishlist</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-cog"></i> Pengaturan</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-regular fa-bell"></i> Notifications</a>
+              </li>
+            </ul>
+          </nav>
+          <a href="#" class="sidebar-logout" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Log out
+          </a>
+        </aside>
+
+        <section class="profile-content">
+          <div class="profile-header-main">
+            <div class="profile-picture-container">
+              <div class="profile-picture-placeholder">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <button class="edit-icon">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+            </div>
+            <div class="profile-user-info">
+              <h3 id="profileName">Nama Pengguna</h3>
+              <p>Alamat User</p>
+            </div>
+          </div>
+
+          <form class="profile-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="input-name">Name</label>
+                <input type="text" id="input-name" placeholder="e.g. Sara" />
+              </div>
+              <div class="form-group">
+                <label for="input-full-name">Full Name</label>
+                <input type="text" id="input-full-name" placeholder="e.g. Tancredi" />
+              </div>
+
+              <div class="form-group">
+                <label for="profileEmail">Email Address</label>
+                <input type="email" id="profileEmail" placeholder="email@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="input-phone">Phone Number</label>
+                <input type="tel" id="input-phone" placeholder="(+98) 9123728167" />
+              </div>
+
+              <div class="form-group">
+                <label for="input-location">Location</label>
+                <input type="text" id="input-location" placeholder="Alamat Tempat Tinggal" />
+              </div>
+              <div class="form-group">
+                <label for="input-postal">Postal Code</label>
+                <input type="text" id="input-postal" placeholder="23728167" />
+              </div>
+            </div>
+
+            <button type="submit" class="save-btn">Save Changes</button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-column about">
+          <div class="logo">Designplus.</div>
+          <p class="tagline">Solusi Cetak Profesional dan Terpercaya</p>
+          <div class="social-links">
+            <a href="#">
+              <i class="fa-brands fa-instagram"></i>
+              <span>designplus</span>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-facebook"></i>
+              <span>designPlus</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column contact">
+          <h3>
+            <i class="fa-solid fa-address-book"></i>
+            Kontak
+          </h3>
+          <ul class="contact-list">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span
+                >Jl. Designplus No.32, Bekasi,<br />Cikarang Selatan,
+                27381</span
+              >
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+6281329176328</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>cs@designplus.com</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column map-area">
+          <h3>Temukan Kami di Google</h3>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4099.53394793094!2d107.6277657107375!3d-6.973357268253711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e9adf177bf8d%3A0x437398556f9fa03!2sUniversitas%20Telkom!5e1!3m2!1sid!2sid!4v1761136929757!5m2!1sid!2sid"
+            width="100%"
+            height="250"
+            style="border: 0; border-radius: 8px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 Designplus. Semua Hak Cipta Dilindungi.
+      </div>
+    </footer>
+    <script src="script/user.js"></script>
+  </body>
+</html>
