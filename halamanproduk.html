@@ -6,6 +6,7 @@
     <title>Halaman Produk - Designplus</title>
     <link rel="stylesheet" href="style/style-halproduk.css"/>
     <link rel="stylesheet" href="style/style-home.css"/>
+    <link rel="stylesheet" href="style/style-etalase-produk.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   </head>
 
@@ -55,13 +56,38 @@
         <section class="product-detail">
             <div class="dp-content">              
                 <div class="content-left">
-                    <img src="assets/baju.png" alt="brosur cetak">
-                    <p class="product-placeholder" id="material">Cotton Combed 30s</p>
-                    <div class="photo-slideshow">
-                      <div class="mini-photo">
-                        <img src="assets/baju.png" alt="baju">
-                      </div>
+                  <div class="product-gallery">
+                    <div class="main-photo">
+                      <img id="mainImage" src="assets/baju.png" alt="baju">
+                      <p class="product-placeholder" id="material">Cotton Combed 30s</p>
                     </div>
+                    <div class="photo-slideshow-container">
+                      <button class="slide-btn left" id="slideLeft">&#10094;</button>
+
+                      <div class="photo-slideshow">
+                        <div class="mini-photo">
+                          <img src="assets/baju.png" alt="baju" class="active" onclick="changePhoto(this)">
+                        </div>
+                        <div class="mini-photo">
+                          <img src="assets/baju.png" alt="baju" class="active" onclick="changePhoto(this)">
+                        </div>
+                        <div class="mini-photo">
+                          <img src="assets/baju.png" alt="baju" class="active" onclick="changePhoto(this)">
+                        </div>
+                        <div class="mini-photo">
+                          <img src="assets/baju.png" alt="baju" class="active" onclick="changePhoto(this)">
+                        </div>
+                        <div class="mini-photo">
+                          <img src="assets/baju.png" alt="baju" class="active" onclick="changePhoto(this)">
+                        </div>
+                        <div class="mini-photo">
+                          <img src="assets/baju.png" alt="baju" class="active" onclick="changePhoto(this)">
+                        </div>
+                      </div>
+                      
+                      <button class="slide-btn right" id="slideRight">&#10095;</button>
+                    </div>
+                  </div>
                     <div>
                       <ul class="mini-option">
                         <li><a href=""><i class="fa-regular fa-comments"></i>Chat</a></li>
@@ -182,7 +208,7 @@
             <h1 class="title-header">Pengiriman</h1>
             <div class="container-detail">
               <div style="width: 24px; justify-content: center; display: flex;"><i class="fa-solid fa-location-dot" style="color: #2236E0;"></i></div>
-              <p>Dikirim ke Bekasi</p>
+              <p>Dikirim dari Bekasi</p>
             </div>
             <div id="shipping">
               <div class="container-detail">
@@ -331,6 +357,36 @@
         </section>
         <section>
           <h1 class="title-header">Lihat Produk Lainnya</h1>
+          <div class="other-products">
+            <div class="product-card">
+              <img src="https://placehold.co/200x150/F0F0F0/CCC?text=Kaos" alt="Kaos"/>
+              <div class="card-info">
+                <h3>Kaos</h3>
+                <a href="#" class="arrow-link">&rsaquo;</a>
+              </div>
+            </div>
+            <div class="product-card">
+              <img src="https://placehold.co/200x150/F0F0F0/CCC?text=Kaos" alt="Kaos"/>
+              <div class="card-info">
+                <h3>Kaos</h3>
+                <a href="#" class="arrow-link">&rsaquo;</a>
+              </div>
+            </div>
+            <div class="product-card">
+              <img src="https://placehold.co/200x150/F0F0F0/CCC?text=Kaos" alt="Kaos"/>
+              <div class="card-info">
+                <h3>Kaos</h3>
+                <a href="#" class="arrow-link">&rsaquo;</a>
+              </div>
+            </div>
+            <div class="product-card">
+              <img src="https://placehold.co/200x150/F0F0F0/CCC?text=Kaos" alt="Kaos"/>
+              <div class="card-info">
+                <h3>Kaos</h3>
+                <a href="#" class="arrow-link">&rsaquo;</a>
+              </div>
+            </div>
+          </div>
         </section>
     </main>
 

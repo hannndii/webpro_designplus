@@ -161,3 +161,37 @@ productForm.addEventListener('submit', function(e) {
   localStorage.setItem('current_order', JSON.stringify(order));
   window.location.href = 'paymentpage.html';
 });
+
+function changeImage(element) {
+  // Ubah gambar utama
+  const mainImage = document.getElementById('mainImage');
+  mainImage.src = element.src;
+
+  // Ubah teks caption sesuai alt
+  const caption = document.querySelector('.image-caption');
+  caption.textContent = element.alt;
+
+  // Atur border aktif
+  const thumbnails = document.querySelectorAll('.thumbnail-slider img');
+  thumbnails.forEach(img => img.classList.remove('active'));
+  element.classList.add('active');
+}
+
+function changePhoto(element) {
+  // Ganti gambar utama
+  const mainImage = document.getElementById('mainImage');
+  mainImage.src = element.src;
+
+  // Ubah border aktif thumbnail
+  const thumbnails = document.querySelectorAll('.mini-photo img');
+  thumbnails.forEach(img => img.classList.remove('active'));
+  element.classList.add('active');
+}
+
+const slider = document.getElementById('slider');
+document.getElementById('slideLeft').addEventListener('click', () => {
+  slider.scrollLeft -= 150;
+});
+document.getElementById('slideRight').addEventListener('click', () => {
+  slider.scrollLeft += 150;
+});
