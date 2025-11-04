@@ -1,53 +1,78 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Designplus</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Designplus</title>
 
-  <link rel="stylesheet" href="style/style-login.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <div class="left">
-      <div class="login-box">
-        <h1 class="logo">Designplus<span class="dot">.</span></h1>
+    <link rel="stylesheet" href="style/style-login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <div class="login-box">
+          <h1 class="logo">Designplus<span class="dot">.</span></h1>
 
-        <p class="changing-text" id="changingText">Mencetak dengan kualitas terbaik...</p>
+          <p class="changing-text" id="changingText">
+            Mencetak dengan kualitas terbaik...
+          </p>
 
-        <h2>Masuk</h2>
+          <h2>Masuk</h2>
 
-        <form id="loginForm">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Masukkan email" required>
+          <form id="loginForm">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Masukkan email"
+              required
+            />
 
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Masukkan password" required>
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                placeholder="Masukkan password"
+                required
+              />
+              <i class="fa fa-eye toggle-password" id="togglePassword"></i>
+            </div>
 
-          <button type="submit" class="btn">Log in</button>
+            <button type="submit" class="btn">Log in</button>
 
-          <div class="divider">
-            <span>Atau</span>
-          </div>
+            <div class="divider">
+              <span>Atau</span>
+            </div>
 
-          <button type="button" class="google-btn">
-            <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
-            Masuk dengan Google
-          </button>
-        </form>
+            <button type="button" class="google-btn">
+              <img
+                src="https://www.svgrepo.com/show/355037/google.svg"
+                alt="Google"
+              />
+              Masuk dengan Google
+            </button>
+          </form>
 
-        <p class="signup">
-          Belum punya akun?
-          <a href="register.html">Daftar di sini</a>
-        </p>
+          <p class="signup">
+            Belum punya akun?
+            <a href="register.html">Daftar di sini</a>
+          </p>
+        </div>
       </div>
+
+      <div class="right"></div>
     </div>
 
-    <div class="right"></div>
-  </div>
-
-  <script src="script/text-change.js"></script>
-  <script src="script/login.js"></script>
-</body>
+    <script src="script/text-change.js"></script>
+    <script src="script/login.js"></script>
+  </body>
 </html>
