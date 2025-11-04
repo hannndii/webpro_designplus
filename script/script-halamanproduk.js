@@ -29,7 +29,7 @@ async function getData() {
 
 // Update all product-related elements on the page
 function renderDataFromJson(product) {
-    document.getElementById('nama_produk').innerText = product.nama;
+    document.getElementById('nama_produk').innerText = `${product.nama}`;
     document.title = `Jual ${product.nama} - Designplus`;
     
     document.getElementById('product-name').innerText = product.nama;
@@ -92,10 +92,11 @@ productForm.addEventListener('change', function(e) {
     const design = document.querySelector('input[name="design"]:checked').value;
     const quantity = parseInt(quantityInput.value);
 
-    document.getElementById('material').innerText = material;
+    document.getElementById('raw-material').innerText = material;
     document.getElementById('color').innerText = color;
     document.getElementById('design-option').innerText = design;
     document.getElementById('total').innerText = quantity;
+    document.querySelector('.product-placeholder').innerText = material;
     
     const productName = document.getElementById('product-name').getAttribute('data-original-name') || 
                        document.getElementById('product-name').innerText;
@@ -161,3 +162,47 @@ productForm.addEventListener('submit', function(e) {
   localStorage.setItem('current_order', JSON.stringify(order));
   window.location.href = 'paymentpage.html';
 });
+
+const carousel = document.querySelector(".carousel");
+const arrowBtns = document.querySelectorAll(".slideshow-wrapper i");
+const firstCardWidth = carousel.querySelector(".mp-card").offsetWidth;
+
+let isDragging = false, startX, startScrollLeft;
+
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+    })
+})
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+}
+
+const dragging = (e) => {
+    if(!isDragging) return;
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = (e) => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+}
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
+
+function changePhoto(element) {
+  const mainImage = document.getElementById('mainImage');
+  mainImage.src = element.src;
+
+  const currentActive = document.querySelector('.mp-card.active');
+  if (currentActive) {
+    currentActive.classList.remove('active');
+  }
+  element.closest('.mp-card').classList.add('active');
+}
