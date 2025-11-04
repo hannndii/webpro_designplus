@@ -64,24 +64,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function loadUserData() {
-        const userData = JSON.parse(localStorage.getItem("userData")) || {};
+        currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
 
-        document.querySelector("#input-name").value = userData.name || "";
-        document.querySelector("#input-full-name").value = userData.fullName || "";
-        document.querySelector("#profileEmail").value = userData.email || "";
-        document.querySelector("#input-phone").value = userData.phone || "";
-        document.querySelector("#input-location").value = userData.location || "";
-        document.querySelector("#input-postal").value = userData.postalCode || "";
+        document.querySelector("#input-name").value = currentUser.name || "";
+        document.querySelector("#input-full-name").value = currentUser.fullName || "";
+        document.querySelector("#profileEmail").value = currentUser.email || "";
+        document.querySelector("#input-phone").value = currentUser.phone || "";
+        document.querySelector("#input-location").value = currentUser.location || "";
+        document.querySelector("#input-postal").value = currentUser.postalCode || "";
 
-        if (userData.name && document.querySelector("#profileName")) {
-            document.querySelector("#profileName").textContent = userData.name;
+        if (currentUser.name && document.querySelector("#profileName")) {
+            document.querySelector("#profileName").textContent = currentUser.name;
         }
-        if (userData.location && document.querySelector(".profile-user-info p")) {
-            document.querySelector(".profile-user-info p").textContent = userData.location;
+        if (currentUser.location && document.querySelector(".profile-user-info p")) {
+            document.querySelector(".profile-user-info p").textContent = currentUser.location;
         }
 
-        if (userDisplay && userData.name) {
-            userDisplay.textContent = userData.name;
+        if (userDisplay && currentUser.name) {
+            userDisplay.textContent = currentUser.name;
         }
     }
 
@@ -97,22 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("userData", JSON.stringify(userData));
 
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
-            const updatedUser = { ...currentUser, ...userData };
-            localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+            currentUser = { ...currentUser, ...userData };
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
         }
 
         const users = JSON.parse(localStorage.getItem("users")) || [];
-        const userIndex = users.findIndex(user => user.email === currentUser.email);
+        const userIndex = users.findIndex(u => u.email === currentUser.email);
 
         if (userIndex !== -1) {
             users[userIndex] = { ...users[userIndex], ...userData };
-            localStorage.setItem("users", JSON.stringify(users));
+        } else {
+            users.push(currentUser);
         }
+        localStorage.setItem("users", JSON.stringify(users));
 
         alert("Perubahan berhasil disimpan!");
+
+        loadUserData();
     }
+
 
     const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
     const profileContent = document.getElementById("profileContent");
@@ -400,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const deleteButtons = profileContent.querySelectorAll('.delete-notif-btn');
                     deleteButtons.forEach(button => {
                         button.addEventListener('click', (e) => {
-                            e.stopPropagation(); 
+                            e.stopPropagation();
 
                             const itemToRemove = button.closest('.notification-item');
                             if (itemToRemove) {
