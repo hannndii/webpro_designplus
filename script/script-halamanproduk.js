@@ -137,10 +137,6 @@ menuLinks.forEach(link => {
   });
 });
 
-function productMenuContent(){
-
-}
-
 productForm.addEventListener('submit', function(e) {
   e.preventDefault();
   
@@ -158,8 +154,8 @@ productForm.addEventListener('submit', function(e) {
     productImage: document.querySelector('.content-left img').src
   };
 
-  // Save order to localStorage
   localStorage.setItem('current_order', JSON.stringify(order));
+  console.log('Order:', order);
   window.location.href = 'paymentpage.html';
 });
 
