@@ -29,7 +29,7 @@ async function getData() {
 
 // Update all product-related elements on the page
 function renderDataFromJson(product) {
-    document.getElementById('nama_produk').innerText = product.nama;
+    document.getElementById('nama_produk').innerText = `${product.nama}`;
     document.title = `Jual ${product.nama} - Designplus`;
     
     document.getElementById('product-name').innerText = product.nama;
@@ -92,10 +92,11 @@ productForm.addEventListener('change', function(e) {
     const design = document.querySelector('input[name="design"]:checked').value;
     const quantity = parseInt(quantityInput.value);
 
-    document.getElementById('material').innerText = material;
+    document.getElementById('raw-material').innerText = material;
     document.getElementById('color').innerText = color;
     document.getElementById('design-option').innerText = design;
     document.getElementById('total').innerText = quantity;
+    document.querySelector('.product-placeholder').innerText = material;
     
     const productName = document.getElementById('product-name').getAttribute('data-original-name') || 
                        document.getElementById('product-name').innerText;
@@ -162,36 +163,46 @@ productForm.addEventListener('submit', function(e) {
   window.location.href = 'paymentpage.html';
 });
 
-function changeImage(element) {
-  // Ubah gambar utama
-  const mainImage = document.getElementById('mainImage');
-  mainImage.src = element.src;
+const carousel = document.querySelector(".carousel");
+const arrowBtns = document.querySelectorAll(".slideshow-wrapper i");
+const firstCardWidth = carousel.querySelector(".mp-card").offsetWidth;
 
-  // Ubah teks caption sesuai alt
-  const caption = document.querySelector('.image-caption');
-  caption.textContent = element.alt;
+let isDragging = false, startX, startScrollLeft;
 
-  // Atur border aktif
-  const thumbnails = document.querySelectorAll('.thumbnail-slider img');
-  thumbnails.forEach(img => img.classList.remove('active'));
-  element.classList.add('active');
+arrowBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+    })
+})
+
+const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging");
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
 }
+
+const dragging = (e) => {
+    if(!isDragging) return;
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+}
+
+const dragStop = (e) => {
+    isDragging = false;
+    carousel.classList.remove("dragging");
+}
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+document.addEventListener("mouseup", dragStop);
 
 function changePhoto(element) {
-  // Ganti gambar utama
   const mainImage = document.getElementById('mainImage');
   mainImage.src = element.src;
 
-  // Ubah border aktif thumbnail
-  const thumbnails = document.querySelectorAll('.mini-photo img');
-  thumbnails.forEach(img => img.classList.remove('active'));
-  element.classList.add('active');
+  const currentActive = document.querySelector('.mp-card.active');
+  if (currentActive) {
+    currentActive.classList.remove('active');
+  }
+  element.closest('.mp-card').classList.add('active');
 }
-
-const slider = document.getElementById('slider');
-document.getElementById('slideLeft').addEventListener('click', () => {
-  slider.scrollLeft -= 150;
-});
-document.getElementById('slideRight').addEventListener('click', () => {
-  slider.scrollLeft += 150;
-});
