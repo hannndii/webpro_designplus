@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(productData => {
-      renderProducts(productData); 
+      renderProducts(productData);
     })
     .catch(error => {
       console.error('Error memuat data produk:', error);
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function getWishlist() {
   let wishlist = JSON.parse(localStorage.getItem("wishlistData"));
   if (!wishlist) {
-    wishlist = []; 
+    wishlist = [];
   }
   return wishlist;
 }
@@ -69,7 +69,7 @@ function renderProducts(productData) {
   const productCards = gridContainer.querySelectorAll(".product-card");
   productCards.forEach((card) => {
     card.addEventListener("click", () => {
-      const id = card.dataset.id; 
+      const id = card.dataset.id;
       localStorage.setItem("selectedProductId", id);
       window.location.href = `halamanproduk.html?id=${id}`;
     });
@@ -94,7 +94,7 @@ function renderProducts(productData) {
         icon.classList.remove("fa-regular");
         icon.classList.add("fa-solid");
       }
-      
+
       saveWishlist(currentWishlist);
     });
   });
@@ -112,7 +112,7 @@ function generateStars(rating) {
   for (let i = 0; i < fullStars; i++) starsHTML += '<i class="fa-solid fa-star"></i>';
   if (halfStar) starsHTML += '<i class="fa-solid fa-star-half-stroke"></i>';
   for (let i = 0; i < emptyStars; i++) starsHTML += '<i class="fa-regular fa-star"></i>';
-  
+
   return starsHTML;
 }
 
