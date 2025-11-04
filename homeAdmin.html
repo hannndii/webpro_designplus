@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Designplus - Admin Dashboard</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style/style-homeAdmin.css" />
+  </head>
+  <body>
+    <!-- ===== NAVBAR ADMIN ===== -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="homeAdmin.html">
+          <img src="assets/logo.png" alt="logo designplus" style="width: 120px;" />
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="#">Kelola Produk</a></li>
+        <li><a href="#">Pesanan</a></li>
+        <li><a href="#">Laporan</a></li>
+        <li>
+          <a href="#" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ===== MAIN CONTENT (kosong / bisa isi konten admin baru di sini) ===== -->
+    <main>
+      <section class="admin-content">
+        <h2>Dashboard Admin</h2>
+        <p>Selamat datang di halaman admin Designplus.</p>
+      </section>
+
+      <footer class="footer">
+        <p>&copy; 2025 Designplus Admin Panel. Semua Hak Cipta Dilindungi.</p>
+      </footer>
+    </main>
+
+    <script>
+      // Logout logic
+      document.getElementById("logoutBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        alert("Anda telah logout.");
+        window.location.href = "login.html";
+      });
+    </script>
+  </body>
+</html>
